@@ -1,0 +1,375 @@
+/* ------------------------------
+   RESETEO GENERAL Y ESTILOS BASE
+--------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ajusta medidas correctas en padding/border */
+    font-family: Arial, sans-serif;
+}
+
+/* ------------------------------
+   ENCABEZADO / HEADER
+--------------------------------*/
+.header {
+    width: 100%;
+    padding: 20px 50px;          /* Espaciado interno */
+    display: flex;               /* Elementos en fila */
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.header nav a {
+    margin: 0 15px;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Contenedor de botones del header */
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+/* Botón negro del header */
+.btn {
+    background: #000;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Icono de usuario */
+.user-icon {
+    background: #ddd;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo imagen */
+.logo-img {
+    width: 140px;
+    height: auto;
+    cursor: pointer;
+}
+
+/* ------------------------------
+   NAVBAR INFERIOR
+--------------------------------*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 18px 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-left a,
+.nav-right a {
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Botón "hazte anfitrión" */
+.host-btn {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #111;
+    color: white !important;
+    font-size: 13px;
+}
+
+/* Botón menú */
+.menu-btn {
+    background: none;
+    border: 1px solid #aaa;
+    padding: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ------------------------------
+   SECCIÓN HERO
+--------------------------------*/
+.hero {
+    padding: 80px 40px;
+    background: #f1f0b5;     /* Fondo amarillo suave */
+}
+
+.hero h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    width: 50%;
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    background: #111827;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ------------------------------
+   SECCIÓN DOS (IMAGEN + TEXTO)
+--------------------------------*/
+.section-two {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 70px 40px;
+}
+
+/* Imagen lateral */
+.section-img {
+    width: 40%;
+    height: 250px;
+    background-image:url(../public/css/img/welcome.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+/* Texto lateral */
+.section-text {
+    width: 50%;
+}
+
+.section-text h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.section-text p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* ------------------------------
+   SECCIÓN TIPS / TARJETAS
+--------------------------------*/
+.tips {
+    padding: 40px;
+}
+
+.tips h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: flex;
+    gap: 25px;
+}
+
+/* Contenedor de tarjetas */
+.cards-container {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+}
+
+/* Tarjeta individual */
+.card {
+    width: 200px;
+}
+
+/* Imagen de tarjeta */
+.card-img {
+    width: 100%;
+    height: 150px;
+    background: #ddd;
+    border-radius: 15px;
+}
+
+/* Texto debajo de tarjeta */
+.card p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Variantes de tarjetas con imagen */
+.map1 {
+    background-image: url(../public/css/img/map.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.pa1 {
+    background-image: url(public/css/img/paquete.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.turismo1 {
+    background-image: url(../public/css/img/turismo.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* ------------------------------
+   RESPONSIVE PARA TABLET / MOVIL
+--------------------------------*/
+@media (max-width: 900px) {
+
+    /* Sección dos se apila */
+    .section-two {
+        flex-direction: column;
+    }
+
+    .section-img {
+        width: 100%;
+    }
+
+    .section-text {
+        width: 100%;
+    }
+
+    /* Tarjetas en columna */
+    .cards {
+        flex-direction: column;
+    }
+}
+
+/* ------------------------------
+   PERFIL DE USUARIO
+--------------------------------*/
+
+/* Reinicio secundario */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo general */
+body {
+    font-family: Arial, sans-serif;
+    background: #f9ffd7b7;   /* Verde muy suave */
+    color: #333;
+}
+
+/* Contenedor principal del perfil */
+.profile-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* Tarjeta de perfil */
+.profile-card {
+    background: rgba(252, 248, 192, 0.815); /* Amarillo pastel */
+    width: 260px;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Foto del usuario */
+.profile-card img {
+    width: 90px;
+    height: 90px;
+    background: #f8afaf;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover; /* Mantener proporción */
+}
+
+/* Texto subir foto */
+.upload-text {
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Nombre del usuario */
+.profile-card h3 {
+    margin: 15px 0 5px;
+}
+
+/* Descripción corta */
+.profile-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Lista de información */
+.profile-card ul {
+    margin-top: 15px;
+    list-style: none;
+    text-align: left;
+    color: #c2bfbf;
+}
+
+/* Icono antes de cada item */
+.profile-card ul li::before {
+    content: "✔ ";
+    color: rgb(150, 151, 94);
+}
+
+/* Panel derecho (detalles del perfil) */
+.details {
+    flex: 1;
+}
+
+/* Título de sección */
+.details h2 {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+/* Subtítulo */
+.subtext {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Botón editar */
+.edit-btn {
+    padding: 8px 15px;
+    background: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Línea divisora */
+.divider {
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}

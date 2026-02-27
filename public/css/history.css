@@ -1,0 +1,84 @@
+/* Estilo general del cuerpo de la página */
+body {
+    font-family: Arial, sans-serif; /* Fuente principal */
+    margin: 40px;                  /* Separación alrededor del contenido */
+    color: #333;                   /* Color del texto */
+    background-color: #f8fcd277;   /* Fondo suave verde claro */
+}
+
+/* Títulos principales */
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de pestañas */
+.tabs {
+    display: flex;         /* Alinea las pestañas en fila */
+    gap: 30px;             /* Espacio entre pestañas */
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Estilos base de cada pestaña */
+.tabs span {
+    cursor: pointer;       /* Cursor tipo botón */
+    color: #555;
+}
+
+/* Pestaña activa */
+.tabs .active {
+    font-weight: bold;     /* Se ve más destacada */
+    color: #000;
+}
+
+/* Botón/Link de descarga alineado a la derecha */
+.download {
+    float: right;          /* Lo envía a la derecha */
+    margin-top: -30px;     /* Lo sube un poco */
+    font-size: 14px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Icono agregado antes del texto de descarga */
+.download::before {
+    content: "📄 ";        /* Emoji de documento */
+}
+
+/* Línea divisora */
+.line {
+    width: 100%;
+    height: 1px;
+    background: #eee;       /* Color gris claro */
+    margin: 10px 0 20px;    /* Separación arriba y abajo */
+}
+
+/* Caja de transacción */
+.transaction-box {
+    background: #f6fcad;        /* Fondo amarillo suave */
+    padding: 15px 20px;         /* Espacio interno */
+    border-radius: 8px;         /* Bordes suaves */
+    margin-bottom: 15px;
+    display: flex;              /* Texto a la izquierda + monto a la derecha */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Contenedor de la información de la transacción */
+.transaction-info {
+    font-size: 13px;
+}
+
+/* Título de cada transacción */
+.transaction-info .title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Cantidad / monto a la derecha */
+.amount {
+    font-size: 15px;
+    font-weight: 600;
+}

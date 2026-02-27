@@ -1,0 +1,168 @@
+/* Quita márgenes y padding por defecto, ajusta box-sizing y define fuente global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+/* Fondo general y separación del contenido */
+body {
+    background: hsl(69, 100%, 89%);
+    padding: 40px;
+}
+
+/* Contenedor principal del perfil */
+.profile-box {
+    border: 3px solid #635e23c5; /* Borde exterior del recuadro */
+    padding: 25px;               /* Espacio interno */
+    display: flex;               /* Divide el contenido en 2 columnas */
+    gap: 40px;                   /* Espacio entre columnas */
+    border-radius: 6px;          /* Bordes redondeados */
+}
+
+/* Panel izquierdo (foto + info básica) */
+.left-panel {
+    width: 250px;       /* Ancho fijo */
+    background: #f3f3f3;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* Caja del área para subir foto */
+.photo-upload {
+    text-align: center;   /* Centra todo dentro */
+    margin-bottom: 20px;
+}
+
+/* Círculo donde va la foto */
+.photo-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;         /* Lo convierte en círculo */
+    background: #dcdcdc;
+    margin: auto;               /* Centrar horizontal */
+    display: flex;              /* Centra el icono dentro */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajustes de la imagen del ícono */
+.photo-circle img {
+    width: 60px;
+    opacity: 0.7; /* Le da un estilo semi-transparente */
+}
+
+/* Texto debajo del icono de foto */
+.upload-text {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Contenedor de la identidad */
+.identity-box {
+    margin-top: 25px;
+}
+
+.identity-box h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.identity-box p {
+    font-size: 13px;
+    color: #000000;
+}
+
+/* Información del host */
+.host-info {
+    margin-top: 25px;
+}
+
+.host-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.host-info p {
+    font-size: 14px;
+}
+
+/* Panel derecho del formulario */
+.right-panel {
+    flex: 1; /* Ocupa todo el espacio restante */
+}
+
+/* Título del panel derecho */
+.right-panel h2 {
+    margin-bottom: 3px;
+}
+
+/* Texto "Joined" */
+.joined {
+    color: #888;
+    font-size: 14px;
+}
+
+/* Contenedor del formulario */
+form {
+    margin-top: 20px;
+}
+
+/* Estilo de etiquetas del formulario */
+label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Estilo general para inputs y textarea */
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Ajuste del textarea */
+textarea {
+    height: 110px;
+    resize: none; /* Evita que lo agranden con el mouse */
+}
+
+/* Nota informativa debajo del textarea */
+.info-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #fffbfb;
+}
+
+/* Contenedor de los botones */
+.buttons {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Botón Cancelar */
+.cancel {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Botón Guardar */
+.save {
+    background: #ffed9d;
+    color: #000000;
+    padding: 10px 22px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Instalaciones</title>
+<link rel="stylesheet" href="../public/css/editroom.css">
+<style>
+    .facility {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    button {
+        padding: 5px 12px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2 class="title">Añade las instalaciones disponibles en tu lugar.</h2>
+
+<div class="facilities">
+
+    <div class="facility">
+        <button class="minus" data-type="dorm">-</button>
+        <span id="dorm">0 Dormitorios</span>
+        <button class="plus" data-type="dorm">+</button>
+    </div>
+
+    <div class="facility">
+        <button class="minus" data-type="bath">-</button>
+        <span id="bath">0 Baños</span>
+        <button class="plus" data-type="bath">+</button>
+    </div>
+
+    <div class="facility">
+        <button class="minus" data-type="park">-</button>
+        <span id="park">0 Parqueaderos</span>
+        <button class="plus" data-type="park">+</button>
+    </div>
+
+</div>
+
+<a href="../html_Admin/info.html">
+    <button class="next-btn">Siguiente</button>
+</a>
+
+<script>
+    // Valores iniciales
+    const counts = {
+        dorm: 0,
+        bath: 0,
+        park: 0
+    };
+
+    function updateDisplay(type) {
+        const display = document.getElementById(type);
+
+        if (type === 'dorm') display.textContent = `${counts[type]} Dormitorios`;
+        if (type === 'bath') display.textContent = `${counts[type]} Baños`;
+        if (type === 'park') display.textContent = `${counts[type]} Parqueaderos`;
+    }
+
+    // Botones +
+    document.querySelectorAll(".plus").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const type = btn.dataset.type;
+            counts[type]++;
+            updateDisplay(type);
+        });
+    });
+
+    // Botones -
+    document.querySelectorAll(".minus").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const type = btn.dataset.type;
+            if (counts[type] > 0) {
+                counts[type]--;
+                updateDisplay(type);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

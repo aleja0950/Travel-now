@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+
+    <!-- Archivo CSS principal -->
+    <link rel="stylesheet" href="../public/css/edit.css">
+</head>
+<body>
+
+<!-- ============================
+     CONTENEDOR GENERAL DEL PERFIL
+     ============================ -->
+<div class="profile-box">
+
+    <!-- ===================================================
+         PANEL IZQUIERDO: FOTO, IDENTIDAD Y DATOS DEL HOST
+         =================================================== -->
+    <div class="left-panel">
+
+        <!-- Foto de perfil + botón de subida -->
+        <div class="photo-upload">
+            <div class="photo-circle">
+                <img src="../public/img/user.jpg" alt="">
+            </div>
+            <p class="upload-text">Actualiza la foto</p>
+        </div>
+
+        <!-- Información de verificación -->
+        <div class="identity-box">
+            <h4>Verificacion de identidad</h4>
+            <p>Administrador del Hotel palmar</p>
+        </div>
+
+        <!-- Información del host -->
+        <div class="host-info">
+            <h3>Alejandra Torres - Host</h3>
+            <p>✔ Email Confirmado</p>
+            <p>✔ Numero Confirmado</p>
+        </div>
+
+    </div>
+
+    <!-- ===========================================
+         PANEL DERECHO: FORMULARIO DE EDICIÓN
+         =========================================== -->
+    <div class="right-panel">
+
+        <!-- Encabezado del panel -->
+        <h2>Hola, Alejandra Torres</h2>
+        <span class="joined">Ingresado en 2025</span>
+
+        <!-- Formulario de edición de perfil -->
+        <form>
+
+            <!-- Sobre mí -->
+            <label>Sobre</label>
+            <textarea placeholder="Escribe algo"></textarea>
+
+            <!-- Ubicación -->
+            <label>Ubicacion</label>
+            <input type="text" placeholder="Escribe tu ubicación">
+
+            <!-- Trabajo -->
+            <label>Trabajo</label>
+            <input type="text" placeholder="">
+
+            <!-- Sección de información -->
+            <p class="info-note">Informacion</p>
+
+            <!-- Botones de acción -->
+            <div class="buttons">
+                <button type="button" class="cancel">✖ Cancelar</button>
+                <button type="submit" class="save">Guardar</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

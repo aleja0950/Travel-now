@@ -1,0 +1,125 @@
+/* ------------------------------------------ */
+/* Estilos generales de la página */
+/* ------------------------------------------ */
+body {
+    font-family: Arial, sans-serif; /* Fuente principal */
+    margin: 40px;                   /* Espaciado alrededor */
+    color: #333;                    /* Color de texto */
+    background: #f9ffd7b7;          /* Fondo amarillo suave */
+}
+
+/* ------------------------------------------ */
+/* Título principal */
+/* ------------------------------------------ */
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* ------------------------------------------ */
+/* Contenedor de pestañas */
+/* ------------------------------------------ */
+.tabs {
+    display: flex;      /* Se muestran en fila */
+    gap: 30px;          /* Separación entre pestañas */
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Estilo base de cada pestaña */
+.tabs span {
+    cursor: pointer;    /* Cursor tipo clic */
+    color: #666;        /* Gris suave */
+}
+
+/* Pestaña activa (seleccionada) */
+.tabs .active {
+    font-weight: bold;
+    color: #000;
+}
+
+/* ------------------------------------------ */
+/* Línea divisora */
+/* ------------------------------------------ */
+.line {
+    width: 100%;
+    height: 1px;
+    background: #eee;  /* Gris claro */
+    margin: 10px 0 25px;
+}
+
+/* ------------------------------------------ */
+/* Caja de cada reservación */
+/* ------------------------------------------ */
+.reservation {
+    display: flex;                /* Imagen + información */
+    align-items: center;
+    background: #f1f8c9b7;        /* Verde pastel suave */
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Imagen de la propiedad */
+.img-box {
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+/* ------------------------------------------ */
+/* Información de la reserva */
+/* ------------------------------------------ */
+.info {
+    margin-left: 15px;
+    font-size: 13px;
+    flex: 1;                      /* Ocupa todo el espacio restante */
+}
+
+/* Título de cada reserva */
+.title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ------------------------------------------ */
+/* Botones de acción (Aprobar / Rechazar) */
+/* ------------------------------------------ */
+.buttons {
+    display: flex;
+    gap: 10px;                    /* Espacio entre botones */
+}
+
+/* Estilo general del botón */
+.btn {
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* Botón "Aprobar" */
+.approve {
+    background: #fced9d;         /* Amarillo suave */
+    color: #000000;
+}
+
+/* Hover para "Aprobar" */
+.approve:hover {
+    background-color: #ffe65b;   /* Un amarillo más vivo */
+}
+
+/* Botón "Rechazar" */
+.reject {
+    background: #f9ffc49d;      /* Verde-amarillo pastel */
+    color: #050505;
+}
+
+/* Hover para "Rechazar" */
+.reject:hover {
+    background-color: #f4fd9d;   /* Más brillante */
+}

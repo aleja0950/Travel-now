@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/css/host.css">
+
+</head>
+<body>
+    
+    <!-- ================================
+         HEADER: LOGO + MENÚ DE NAVEGACIÓN
+         ================================ -->
+    <header class="header">
+
+        <!-- Logo principal -->
+        <img src="public/css/img/icono-removebg-preview.png" class="logo-img" alt="Logo">
+
+        <!-- Menú de navegación -->
+        <nav>
+            <a href="hostpage.html">Inicio</a>
+            <a href="html_Admin/propiedades.html">Propiedades</a>
+            <a href="html_Admin/history.html">Historial</a>
+            <a href="html_Admin/reservashost.html">Reservas</a>
+            <a href="index.php?controller=login&action=logout">Cerrar</a>  
+        </nav>
+
+        <!-- Botones del header (Administrador + Perfil) -->
+        <div class="header-buttons">
+
+            <!-- Botón para ser administrador -->
+            <a href="index.php?controller=user&action=crear">
+                <button class="btn">Conviértete en Administrador</button>
+            </a>
+
+            <!-- Botón/perfil del usuario -->
+            <a href="perfilhost.html">
+                <button class="user-icon">☺</button>
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- ===========================================
+         SECCIÓN HERO: TÍTULO + DESCRIPCIÓN + BOTÓN
+         =========================================== -->
+    <div class="hero">
+        <h1>Intenta ser un host con nosotros</h1>
+
+        <p>
+            Convertirte en host con nosotros es una oportunidad para transformar tu espacio en una fuente 
+            de ingresos estable y flexible. No solo te permite rentabilizar una habitación, apartamento o 
+            propiedad, sino que también te conecta con personas de diferentes lugares que buscan comodidad, 
+            seguridad y experiencias auténticas.
+        </p>
+
+        <p>
+            Con nosotros, ser host no es solo ofrecer un lugar, sino construir una experiencia que los 
+            viajeros valoran, mientras tú obtienes beneficios reales, mayor visibilidad y control total 
+            sobre tus reservas y tarifas. Es una forma práctica, rentable y sencilla de aprovechar al 
+            máximo tu propiedad.
+        </p>
+
+        <!-- Botón para ir al formulario -->
+        <a href="form.html">
+            <button>Contáctanos</button>
+        </a>
+    </div>
+
+
+    <!-- ======================================================
+         SEGUNDA SECCIÓN: IMAGEN + TEXTO DE INFORMACIÓN DE HOST
+         ====================================================== -->
+    <div class="section-two">
+
+        <!-- Imagen lateral -->
+        <div class="section-img"></div>
+
+        <!-- Texto de la sección -->
+        <div class="section-text">
+            <h2>Crea Lugares memorables</h2>
+
+            <p>
+                Transformar tu propiedad en un espacio acogedor puede marcar la diferencia para quienes viajan 
+                en busca de comodidad y una experiencia auténtica. Ser anfitrión te permite ofrecer más que un 
+                lugar: puedes crear momentos que tus huéspedes recordarán.
+            </p>
+
+            <p>
+                Gracias a nuestras herramientas y soporte, gestionar tu alojamiento es simple y eficiente. 
+                Podrás controlar disponibilidad, mensajes y seguridad para ofrecer una experiencia confiable.
+            </p>
+
+            <p>
+                Únete a una comunidad que valora la hospitalidad y descubre cómo tu espacio puede convertirse 
+                en una fuente de ingresos mientras conectas con personas de distintas partes del mundo.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- =======================================
+         TIPS Y GUÍAS PARA ANFITRIONES (CARDS)
+         ======================================= -->
+    <div class="tips">
+        <h2>Hosting Tips y guías</h2>
+
+        <!-- Contenedor de tarjetas -->
+        <div class="cards-container">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-img map1"></div>
+                <p>Zonas cercanas</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-img pa1"></div>
+                <p>Paquetes</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-img turismo1"></div>
+                <p>Turismo</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título de la página -->
+    <title>Reservaciones</title>
+
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="../public/css/reserve.css">
+</head>
+<body>
+
+    <!-- Encabezado principal -->
+    <h1>Reservaciones</h1>
+
+    <!-- Navegación entre pestañas -->
+    <div class="tabs">
+        <!-- Pestaña: Próximas -->
+        <span class="active" onclick="showTab('upcoming')">Próximas</span>
+
+        <!-- Pestaña: Pasadas -->
+        <span onclick="showTab('past')">Pasadas</span>
+
+        <!-- Pestaña: Rechazadas -->
+        <span onclick="showTab('rejected')">Rechazadas</span>
+    </div>
+
+    <!-- Línea divisoria -->
+    <div class="line"></div>
+
+    <!-- Contenedor dinámico donde se mostrarán las reservas -->
+    <div id="reservationContainer"></div>
+
+    <!-- Archivo JavaScript que controla la lógica -->
+    <script src="../js_host/reserve.js"></script>
+</body>
+</html>

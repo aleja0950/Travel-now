@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Permite que el diseño sea responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Archivo CSS principal -->
+    <link rel="stylesheet" href="../public/css/history.css">
+
+    <title>Historial de transacciones</title>
+</head>
+<body>
+
+    <!-- 
+         TÍTULO PRINCIPAL DE LA PÁGINA-->
+    <h1>Historial de transacciones</h1>
+
+    <!-- Botón/Texto para descargar el historial -->
+    <div class="download">Download</div>
+
+    <!-- PESTAÑAS DEL HISTORIAL (TABS) -->
+    <div class="tabs">
+        <!-- Pestaña activa por defecto -->
+        <span class="active" onclick="changeTab('completed')">completas</span>
+
+        <!-- Cambia la vista a transacciones en proceso -->
+        <span onclick="changeTab('upcoming')">En proceso</span>
+
+        <!-- Muestra las ganancias -->
+        <span onclick="changeTab('gross')">Ganancias</span>
+    </div>
+
+    <!-- Línea decorativa divisora -->
+    <div class="line"></div>
+
+    <!--CONTENEDOR DONDE SE INSERTA EL LISTADO
+         DINÁMICO DE TRANSACCIONES DESDE JS-->
+    <div id="transactionContainer"></div>
+
+    <!-- Archivo JavaScript que controla las pestañas y el contenido -->
+    <script src="/js_host/history.js"></script>
+
+</body>
+</html>
