@@ -1,69 +1,69 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-            font-family: Arial, sans-serif;
-            background-color: beige;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(252, 252, 189);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        form{
-            background: white;
-            padding: 30px;
-            width: 350px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        p{
-            text-align: center;
-            color: black;
-             gap: 12px;
-             font-weight: bold;
-            margin-bottom: 4px;
-        }
+form {
+    background: white;
+    padding: 30px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
-        label{
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
+p {
+    text-align: center;
+    color: black;
+    gap: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
 
-        input{
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 15px;
-            transition: 0.3s ease;
-        }
+label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
 
-        input:focus{
-            border-color: hsl(49, 91%, 78%);
-            outline: none;
-            box-shadow: 0 0 5px rgba(245, 237, 134, 0.5);
-        }
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
 
-        button{
-            margin-top: 10px;
-            padding: 12px;
-            border: none;
-            background: #f1f1bd;
-            color: rgb(0, 0, 0);
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
+input:focus {
+    border-color: hsl(49, 91%, 78%);
+    outline: none;
+    box-shadow: 0 0 5px rgba(245, 237, 134, 0.5);
+}
 
-        button:hover{
-            background: #fffaaf;
-        }
-       
+button {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    background: #f1f1bd;
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #fffaaf;
+}

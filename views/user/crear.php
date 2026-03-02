@@ -16,8 +16,9 @@
         </ul>
     </div>
 <?php endif ?>
-<form method="POST">
 
+<form method="POST">
+<p>Si ya tienes una cuenta <a href="views/auth/login.php">Iniciar sesión</a></p>
     <label>Nombre</label>
     <input type="text"  pattern="[A-Za-z\s]+"  name="nombre" required>
 

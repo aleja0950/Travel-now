@@ -141,9 +141,9 @@
     cursor: pointer;
 }
 
-/* ------------------------------
+/*
    SECCIÓN DOS (IMAGEN + TEXTO)
---------------------------------*/
+*/
 .section-two {
     display: flex;
     align-items: center;
@@ -155,7 +155,7 @@
 .section-img {
     width: 40%;
     height: 250px;
-    background-image:url(../public/css/img/welcome.jpg);
+    background-image:url(../img/welcome.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -223,7 +223,7 @@
 
 /* Variantes de tarjetas con imagen */
 .map1 {
-    background-image: url(../public/css/img/map.jpeg);
+    background-image: url(public/css/img/map.jpeg);
     background-size: cover;
     background-position: center;
 }
@@ -235,7 +235,7 @@
 }
 
 .turismo1 {
-    background-image: url(../public/css/img/turismo.jpg);
+    background-image: url(public/css/img/turismo.jpg);
     background-size: cover;
     background-position: center;
 }
