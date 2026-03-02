@@ -15,16 +15,25 @@ public function index(){
     }
 
 public function save($nombre,$apellido,$telefono,$correo,$contrasena){
+
     #array
     $errores=[];
     if (strlen($nombre)<=5){
-$errores[]="el nombre debe tener maas de 6 caracteres"
-    }
+      $errores[]="el nombre debe tener más de 6 caracteres";
+}
+
 $sql= "SELECT* FROM user WHERE correo='$correo'";
+
 $resul=$this->travelnow1->query($sql);
+
 if ($resul->num_rows>0){
     $errores[]="correo ya existe";
 }
+
+if (count($errores)>0){
+    return $errores;
+}
+
 $sql="INSERT INTO user(nombre, apellido, telefono, correo, contrasena)
 VALUES('$nombre','$apellido','$telefono','$correo','$contrasena')";
 

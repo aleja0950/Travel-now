@@ -7,6 +7,15 @@
     <title>Registro</title>
 </head>
 <body>
+<?php if (!empty(($errores))): ?>
+    <div class="errores">
+        <ul>
+           <?php foreach($errores as $e):?>
+            <li> <?= $e ?></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php endif ?>
 <form method="POST">
 
     <label>Nombre</label>

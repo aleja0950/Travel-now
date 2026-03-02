@@ -16,21 +16,24 @@ require_once __DIR__ ."/../views/user/listar.php";
 public function crear() {
 
   if ($_POST){
+    $errores=[];
 
-    $user = new user();
+    $user=new user();
 
-    $u = $user->save(
+    $u=$user->save(
       $_POST['nombre'],
       $_POST['apellido'],
       $_POST['telefono'],
       $_POST['correo'],
-      $_POST['contrasena'],
+      $_POST['contrasena']
     
     );
 
- if(!$u){
-    die("Error al guardar");
-} 
+ if(is_array ($u)){
+  $errores=array_merge($errores,$u);
+  require_once __DIR__."/../views/user/crear.php";
+  return;
+ }
 
  if ($_SESSION['rol'] === 'admin'){
                     // Redirección al panel de administrador
