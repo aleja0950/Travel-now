@@ -18,8 +18,8 @@ public function save($nombre,$apellido,$telefono,$correo,$contrasena){
 
     #array
     $errores=[];
-    if (strlen($nombre)<=5){
-      $errores[]="el nombre debe tener más de 6 caracteres";
+    if (strlen($nombre)<3){
+      $errores[]="el nombre debe tener más de 3caracteres";
 }
 
 $sql= "SELECT* FROM user WHERE correo='$correo'";
