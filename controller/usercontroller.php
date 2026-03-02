@@ -24,7 +24,7 @@ public function crear() {
       $_POST['apellido'],
       $_POST['telefono'],
       $_POST['correo'],
-      password_hash($_POST['contrasena'], PASSWORD_DEFAULT)
+      $_POST['contrasena'],
     
     );
 

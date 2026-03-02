@@ -15,7 +15,7 @@ class authcontroller{
             $model = new auth();
 
             // Se llama al método login del modelo enviando usuario y contraseña
-            $login = $model->login($_POST['usuario'], $_POST['contraseña']);
+            $login = $model->login($_POST['usuario'], $_POST['contrasena']);
 
             // Si el login es correcto
             if($login){

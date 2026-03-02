@@ -119,7 +119,7 @@ button:hover {
         <label>usuario</label>
         <input type="text" pattern="[A-Za-z\s]+" name="usuario" required>
         <label >contraseña</label>
-        <input type="password" id="contra"  minlength="8" name="contraseña"required>
+        <input type="password" id="contra"  minlength="8" name="contrasena"required>
        <button  type="submit">Ingresar</button>  
      
     </form>
