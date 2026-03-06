@@ -60,7 +60,7 @@ class authcontroller{
     // Método para mostrar la vista del administrador
     public function admin(){
         // Carga la vista del panel de administrador
-        require_once __DIR__."/../html_Admin/hostpage.html";
+        require_once __DIR__."/../Admin/hostpage.php";
     }
      // Método para mostrar la vista del user
     public function user(){

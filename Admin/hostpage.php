@@ -33,19 +33,21 @@
             <a href="index.php?controller=user&action=crear">
                 <button class="btn">Conviértete en Administrador</button>
             </a>
-
+            
+              <?php foreach ($datos as $u): ?>
+                
             <!-- Botón/perfil del usuario -->
-            <a href="perfilhost.html">
-                <button class="user-icon">☺</button>
+                        <a href="index.php?controller=user&action=editar&id=<?= $u['Id_user'] ?>">
+                <button class="">perfil</button>
             </a>
-
+  <?php endforeach ?>
         </div>
     </header>
 
 
     <!-- ===========================================
          SECCIÓN HERO: TÍTULO + DESCRIPCIÓN + BOTÓN
-         =========================================== -->
+         =========================================== --> 
     <div class="hero">
         <h1>Intenta ser un host con nosotros</h1>
 
