@@ -27,12 +27,12 @@ class authcontroller{
                 // Se verifica el rol del usuario
                 if ($_SESSION['rol'] === 'admin'){
                     // Redirección al panel de administrador
-                    header("location: index.php?controller=login&action=admin");
+                    header("location: index.php?controller=login&action=admin&msg=bienvenido");
                 }
 
                  if ($_SESSION['rol'] === 'user'){
                     // Redirección al panel del usuario normal
-                    header("location: index.php?controller=login&action=user");
+                    header("location: index.php?controller=login&action=user&msg=sesion activa");
                  }
 
                 // Detiene la ejecución del script después de redirigir
@@ -65,6 +65,6 @@ class authcontroller{
      // Método para mostrar la vista del user
     public function user(){
         // Carga la vista del panel de user
-        require_once __DIR__."/../user/home.html";
+        require_once __DIR__."/../user/home.php";
     }
 }

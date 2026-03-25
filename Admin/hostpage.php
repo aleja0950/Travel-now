@@ -1,3 +1,8 @@
+ <?php
+ session_start()
+ 
+ ?>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +24,22 @@
 
         <!-- Menú de navegación -->
         <nav>
-            <a href="hostpage.html">Inicio</a>
-            <a href="html_Admin/propiedades.html">Propiedades</a>
-            <a href="html_Admin/history.html">Historial</a>
-            <a href="html_Admin/reservashost.html">Reservas</a>
+            <!-- Mensaje de inicio de sesion exitoso -->
+            <?php
+                if(isset($_GET['msg'])){
+                    echo "<p style='color:green;'>".$_GET['msg']."</p>";
+                }
+            ?>
+            <a href="hostpage.php">Inicio</a>
+            <a href="Admin/propiedades.html">Propiedades</a>
+            <a href="Admin/history.html">Historial</a>
+            <a href="Admin/reservashost.html">Reservas</a>
             <a href="index.php?controller=login&action=logout">Cerrar</a>  
         </nav>
+         <?= $_SESSION['user']; ?>
+
+    <!-- Muestra el rol del usuario -->
+    <?= $_SESSION['rol']; ?>
 
         <!-- Botones del header (Administrador + Perfil) -->
         <div class="header-buttons">
@@ -33,14 +48,11 @@
             <a href="index.php?controller=user&action=crear">
                 <button class="btn">Conviértete en Administrador</button>
             </a>
-            
-              <?php foreach ($datos as $u): ?>
-                
-            <!-- Botón/perfil del usuario -->
-                        <a href="index.php?controller=user&action=editar&id=<?= $u['Id_user'] ?>">
-                <button class="">perfil</button>
+               <a href="Admin/perfilhost.php">
+                <button class="btn">Perfil</button>
             </a>
-  <?php endforeach ?>
+            
+
         </div>
     </header>
 

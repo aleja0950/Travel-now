@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+
+ <?php
+ session_start()
+ 
+ ?>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,15 +17,27 @@
     <header class="header">
         <!-- logo -->
        <img src="public/css/img/travel_now_no_bg.png" class="logo-img" alt="Logo">
+        <?php
+                if(isset($_GET['msg'])){
+                    echo "<p style='color:green;'>".$_GET['msg']."</p>";
+                }
+            ?>
         <nav>
-            <a href="user/home.html"> Inicio</a>
+            
+            <a href="user/home.php"> Inicio</a>
             <a href="user/reserva.html">Reserva</a>
             <a href="user/search.html">Buscar</a>
-              <a href="index.php?controller=login&action=logout">Cerrar</a>  
+              <a href="index.php?controller=login&action=logout">Cerrar</a> 
+                    <?= $_SESSION['user']; ?>
+
+    <!-- Muestra el rol del usuario -->
+    <?= $_SESSION['rol']; ?>
         </nav>
         <div class="header-buttons">
           <a href="index.php?controller=user&action=crear">
+         
     <button class="btn">Conviertete en Huesped</button>
+    
 </a>  <a href="user/perfil.html">
     <button class="user-icon">☺</button>
 </a>

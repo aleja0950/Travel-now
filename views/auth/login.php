@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +114,7 @@ button:hover {
     </style>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" onsubmit="mostrarMensaje()">
         <p>inicio</p>
        
         <label>usuario</label>
@@ -122,6 +123,15 @@ button:hover {
         <input type="password" id="contra"  minlength="8" name="contrasena"required>
        <button  type="submit">Ingresar</button>  
      
-    </form>
+      <p id="mensaje" style="color:green;"></p>
+
+        </form>
+
+        <script>
+            function mostrarMensaje(){
+            document.getElementById("mensaje").innerHTML = "Iniciando sesión...";
+            }
+</script>
+   
 </body>
 </html>

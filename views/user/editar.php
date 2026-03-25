@@ -19,3 +19,11 @@
 </form>
 </body>
 </html>
+
+         <p id="mensaje" style="color:green;"></p>
+    </form>
+        <script>
+            function mostrarMensaje(){
+            document.getElementById("mensaje").innerHTML = "Registro exitoso";
+            }
+</script>

@@ -1,3 +1,11 @@
+
+ <?php
+ session_start()
+
+ 
+ 
+ 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +29,9 @@
 
         <h3>Verificacion de identidad</h3>
         <p>Administrador del Hotel palmar</p>
-
-        <h3>Alejandra Torres - Host</h3>
+ <?= $_SESSION['user']; ?>
+   <?= $_SESSION['rol']; ?>
+ <?= $_SESSION['correo']; ?>
 
         <ul>
             <li>Email Confirmado</li>
@@ -31,7 +40,8 @@
     </div>
 
     <div class="details">
-        <h2>Hola, Alejandra Torres</h2>
+         <?= $_SESSION['user']; ?>
+         
         <div class="subtext">Ingresado en 2025</div>
 <a href="/html_Admin/edithost.html">
         <button class="edit-btn">Editar Perfil</button></a>
