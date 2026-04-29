@@ -1,3 +1,9 @@
+<?php
+$errores = $errores ?? [];
+$datos = $datos ?? [];
+$propiedad_editar = $propiedad_editar ?? [];
+$imagenes = $imagenes ?? [];
+?> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -158,8 +164,7 @@
                 <input type="text" id="servicios" name="servicios" value="<?= htmlspecialchars($propiedad_editar['servicios'] ?? 'wifi, tv, bano privado') ?>" required>
 
                 <p class="info-note">Puedes elegir una imagen existente o subir una nueva. Si subes archivo, esa imagen tendra prioridad.</p>
-                <a href="http://">Poner ubicacion en el mapa</a><br>
-
+                 <a href="index.php?controller=map&action=index">Poner ubicacion en el mapa</a><br>
                 <button class="next-btn" id="submit-propiedad" type="submit"><?= $propiedad_editar ? 'Actualizar propiedad' : 'Guardar propiedad' ?></button>
                 <a id="cancelar-edicion-propiedad" href="index.php?controller=propiedad&action=index" class="cancel-edit-link <?= $propiedad_editar ? '' : 'is-hidden' ?>">Cancelar edicion</a>
             </form>

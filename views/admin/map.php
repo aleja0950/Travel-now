@@ -1,3 +1,8 @@
+
+<?php
+/** @var array $locations */
+$locations = $locations ?? [];
+?>
 <h1>Mapa CRUD</h1>
 
 <style>
@@ -66,9 +71,9 @@ $lng = $_GET['lng'] ?? 'null';
 let latURL = <?php echo $lat; ?>;
 let lngURL = <?php echo $lng; ?>;
 
-// 📍 Coordenadas por defecto (Bogotá)
-let defaultLat = latURL ? latURL : 4.60971;
-let defaultLng = lngURL ? lngURL : -74.08175;
+// 📍 Coordenadas por defecto (La Dorada)
+let defaultLat = latURL ? latURL : 5.4457655;
+let defaultLng = lngURL ? lngURL : -74.6618458;
 
 // 🚀 Crear mapa
 let map = L.map('map').setView([defaultLat, defaultLng], 15);

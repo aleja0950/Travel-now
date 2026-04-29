@@ -1,3 +1,7 @@
+<?php
+/** @var array $datos */
+$datos = $datos ?? [];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

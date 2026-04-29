@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -109,8 +110,8 @@
             let locations = <?php echo json_encode($datos ?? []); ?>;
 
             // 📍 Coordenadas por defecto (Bogotá)
-            let defaultLat = 4.60971;
-            let defaultLng = -74.08175;
+            let defaultLat = 5.4457655;
+            let defaultLng = -74.6618458;
 
             // 🚀 Crear mapa
             let map = L.map('map').setView([defaultLat, defaultLng], 12);

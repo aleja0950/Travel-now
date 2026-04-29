@@ -4,6 +4,7 @@ require_once __DIR__ . "/../models/pago.php";
 
 class reservacontroller
 {
+    
     public function index()
     {
         // Arma el detalle de la habitacion junto con reservas visibles,
