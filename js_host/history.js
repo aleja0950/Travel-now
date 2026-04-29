@@ -11,7 +11,7 @@ const data = {
         { title: "Ganancias", date: "Año 2025", amount: "10.000.000" }
     ]
 };
-
+user/Perfil.php
 // Renderiza las transacciones según el tipo seleccionado
 function renderTransactions(type) {
     const container = document.getElementById("transactionContainer"); // Contenedor del HTML

@@ -74,7 +74,18 @@ public function editar() {
     );
 
     // Redirecciona a la lista de usuarios
-    header("Location:index.php?controller=user&action=index");
+     if ($_SESSION['rol'] === 'admin'){
+                    // Redirección al panel de administrador
+                    header("location: Admin/perfilhost.php");
+                }
+
+                 if ($_SESSION['rol'] === 'user'){
+                    // Redirección al panel del usuario normal
+                    header("location: user/Perfil.php");
+                 }
+  
+
+  
   }
 
   // Obtiene los datos del usuario por su ID (enviado por GET)
@@ -107,4 +118,5 @@ public function eliminar(){
         // Carga la vista del panel de user
         require_once __DIR__."/../views/auth/login.php";
     }
+    
 }

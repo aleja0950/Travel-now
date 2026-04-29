@@ -1,6 +1,3 @@
-/* ------------------------------
-   RESETEO GENERAL Y ESTILOS BASE
---------------------------------*/
 * {
     margin: 0;
     padding: 0;
@@ -112,264 +109,189 @@
 }
 
 /* ------------------------------
-   SECCIÓN HERO
+   GESTIÓN DE RESERVACIONES (NUEVO)
 --------------------------------*/
-.hero {
-    padding: 80px 40px;
-    background: #f1f0b5;     /* Fondo amarillo suave */
+
+h1 {
+    margin: 20px 50px;
+    font-size: 28px;
 }
 
-.hero h1 {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 15px;
+/* Mensajes de feedback */
+.feedback-success {
+    margin: 10px 50px;
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 8px;
+    border: 1px solid #c3e6cb;
 }
 
-.hero p {
-    width: 50%;
-    color: #666;
-    font-size: 15px;
-    margin-bottom: 25px;
+/* Fila de Estadísticas (Pills) */
+.stats-row {
+    display: flex;
+    gap: 15px;
+    margin: 20px 50px;
 }
 
-.hero button {
-    background: #111827;
-    color: white;
-    padding: 12px 25px;
+.stat-pill {
+    background: #fff;
+    padding: 8px 20px;
     border-radius: 25px;
-    border: none;
-    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/*
-   SECCIÓN DOS (IMAGEN + TEXTO)
-*/
-.section-two {
+/* Formulario de Filtros */
+.filter-form {
+    margin: 20px 50px;
     display: flex;
     align-items: center;
-    gap: 40px;
-    padding: 70px 40px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-/* Imagen lateral */
-.section-img {
-    width: 40%;
-    height: 250px;
-    background-image:url(../img/welcome.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-}
-
-/* Texto lateral */
-.section-text {
-    width: 50%;
-}
-
-.section-text h2 {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.section-text p {
-    color: #555;
-    margin-bottom: 10px;
-}
-
-/* ------------------------------
-   SECCIÓN TIPS / TARJETAS
---------------------------------*/
-.tips {
-    padding: 40px;
-}
-
-.tips h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.cards {
-    display: flex;
-    gap: 25px;
-}
-
-/* Contenedor de tarjetas */
-.cards-container {
-    margin-top: 25px;
-    display: flex;
-    gap: 20px;
-}
-
-/* Tarjeta individual */
-.card {
-    width: 200px;
-}
-
-/* Imagen de tarjeta */
-.card-img {
-    width: 100%;
-    height: 150px;
-    background: #ddd;
-    border-radius: 15px;
-}
-
-/* Texto debajo de tarjeta */
-.card p {
-    margin-top: 10px;
+.filter-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
     font-size: 14px;
 }
 
-/* Variantes de tarjetas con imagen */
-.map1 {
-    background-image: url(public/css/img/map.jpeg);
-    background-size: cover;
-    background-position: center;
-}
-
-.pa1 {
-    background-image: url(public/css/img/paquete.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
-.turismo1 {
-    background-image: url(public/css/img/turismo.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
-/* ------------------------------
-   RESPONSIVE PARA TABLET / MOVIL
---------------------------------*/
-@media (max-width: 900px) {
-
-    /* Sección dos se apila */
-    .section-two {
-        flex-direction: column;
-    }
-
-    .section-img {
-        width: 100%;
-    }
-
-    .section-text {
-        width: 100%;
-    }
-
-    /* Tarjetas en columna */
-    .cards {
-        flex-direction: column;
-    }
-}
-
-/* ------------------------------
-   PERFIL DE USUARIO
---------------------------------*/
-
-/* Reinicio secundario */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Fondo general */
-body {
-    font-family: Arial, sans-serif;
-    background: #f9ffd7b7;   /* Verde muy suave */
-    color: #333;
-}
-
-/* Contenedor principal del perfil */
-.profile-wrapper {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-}
-
-/* Tarjeta de perfil */
-.profile-card {
-    background: rgba(252, 248, 192, 0.815); /* Amarillo pastel */
-    width: 260px;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* Foto del usuario */
-.profile-card img {
-    width: 90px;
-    height: 90px;
-    background: #f8afaf;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    object-fit: cover; /* Mantener proporción */
-}
-
-/* Texto subir foto */
-.upload-text {
-    margin-bottom: 20px;
-    color: #444;
-    font-size: 14px;
+.filter-button {
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
-/* Nombre del usuario */
-.profile-card h3 {
-    margin: 15px 0 5px;
+.filter-button:hover {
+    background: #333;
 }
 
-/* Descripción corta */
-.profile-card p {
+.filter-link {
+    text-decoration: none;
     color: #666;
     font-size: 14px;
 }
 
-/* Lista de información */
-.profile-card ul {
-    margin-top: 15px;
-    list-style: none;
-    text-align: left;
-    color: #c2bfbf;
+/* Pestañas (Tabs) */
+.tabs {
+    margin: 30px 50px 10px;
+    display: flex;
+    gap: 30px;
 }
 
-/* Icono antes de cada item */
-.profile-card ul li::before {
-    content: "✔ ";
-    color: rgb(150, 151, 94);
+.tabs span {
+    font-size: 16px;
+    color: #777;
+    cursor: pointer;
+    padding-bottom: 8px;
+    position: relative;
+    transition: color 0.3s;
 }
 
-/* Panel derecho (detalles del perfil) */
-.details {
+.tabs span.active {
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+.line {
+    height: 1px;
+    background: #ddd;
+    margin: 0 50px 30px;
+}
+
+/* Paneles de Contenido */
+.tab-panel {
+    display: block;
+    padding: 0 50px 50px;
+}
+
+.tab-panel-hidden {
+    display: none;
+}
+
+/* Tarjeta de Reservación */
+.reservation {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    align-items: center;
+}
+
+.img-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    color: #555;
 }
 
-/* Título de sección */
-.details h2 {
-    font-size: 26px;
+.info .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
     margin-bottom: 5px;
 }
 
-/* Subtítulo */
-.subtext {
-    color: #777;
-    margin-bottom: 20px;
+/* Botones de Acción */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Botón editar */
-.edit-btn {
-    padding: 8px 15px;
-    background: white;
-    border: 1px solid #555;
-    border-radius: 6px;
-    cursor: pointer;
+.inline-form {
+    display: inline;
 }
 
-/* Línea divisora */
-.divider {
-    height: 1px;
-    background: #ddd;
-    margin: 20px 0;
+.btn.approve {
+    background-color: #28a745;
+    width: 120px;
+}
+
+.btn.reject {
+    background-color: #dc3545;
+    width: 120px;
+}
+
+.btn.approve:hover { background-color: #218838; }
+.btn.reject:hover { background-color: #c82333; }
+
+/* Responsive para Reservas */
+@media (max-width: 768px) {
+    .reservation {
+        flex-direction: column;
+        text-align: center;
+    }
+    .img-box {
+        width: 100%;
+        height: 200px;
+    }
+    .stats-row, .tabs, .filter-form {
+        margin: 20px;
+    }
+    .tab-panel {
+        padding: 0 20px;
+    }
 }

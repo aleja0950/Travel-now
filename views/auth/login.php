@@ -122,6 +122,7 @@ button:hover {
         <label >contraseña</label>
         <input type="password" id="contra"  minlength="8" name="contrasena"required>
        <button  type="submit">Ingresar</button>  
+        <a href="views/auth/recuperar.php">recuperar contraseña</a>
      
       <p id="mensaje" style="color:green;"></p>
 

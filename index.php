@@ -5,6 +5,10 @@ session_start();
 // Se incluyen los controladores del sistema
 require_once "controller/usercontroller.php";
 require_once "controller/authcontroller.php";
+require_once "controller/reservacontroller.php";
+require_once "controller/searchcontroller.php";
+require_once "controller/propiedadcontroller.php";
+require_once "controller/mapcontroller.php";
 
 // Se obtienen el controlador y la acción desde la URL (GET)
 // Si no existen, se asigna null
@@ -21,7 +25,6 @@ if (!isset($_SESSION['user'])) {
     // Si no hay sesión, siempre se envía al login
     $controller = 'login';
     $action     = 'login';
-
 } else {
 
     // Si hay sesión iniciada, se envía al módulo de usuario
@@ -42,9 +45,27 @@ switch ($controller) {
         $controller = new authcontroller();
         break;
 
+    case 'reserva':
+        // Instancia el controlador de reservas
+        $controller = new reservacontroller();
+        break;
+
+    case 'search':
+        // Instancia el controlador de busqueda
+        $controller = new searchcontroller();
+        break;
+
+    case 'propiedad':
+        $controller = new propiedadcontroller();
+        break;
+
     default:
         // Controlador por defecto si no coincide ninguno
         $controller = new usercontroller();
+        break;
+
+    case 'map':
+        $controller = new mapcontroller();
         break;
 }
 
@@ -53,10 +74,8 @@ if (method_exists($controller, $action)) {
 
     // Ejecuta el método solicitado
     $controller->$action();
-
 } else {
 
     // Mensaje de error si la acción no existe o no está permitida
     echo "La acción no está permitida o no existe";
 }
-?>

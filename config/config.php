@@ -1,5 +1,6 @@
 
 <?php
+define('API_URL', 'http://localhost/api/location');
 class Database {
     public static function conectar(){
         $conexion= new mysqli(
@@ -10,8 +11,10 @@ class Database {
         );
         if($conexion ->connect_errno){
             die($conexion ->connect_error);
+            
         }
         return $conexion;
     }
+
 }
 // conexiones con las bases de datos

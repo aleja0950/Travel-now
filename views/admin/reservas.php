@@ -1,62 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<link rel="stylesheet" href="/travel-now/Travel-now/public/css/host.css">
+    <title>Reservaciones</title>
+    <link rel="stylesheet" href="public/css/reserve.css">
 </head>
-<?php
-if (!isset($datos)) {
-    $datos = [
-        'upcoming' => [],
-        'past' => [],
-        'rejected' => []
-    ];
-}
-?>
 <body>
-    
-    <!-- ================================
-         HEADER: LOGO + MENÚ DE NAVEGACIÓN
-         ================================ -->
-    <header class="header">
-
-        <!-- Logo principal -->
-        <img src="/travel-now/Travel-now/public/css/img/icono-removebg-preview.png" class="logo-img" alt="Logo">
-
-        <!-- Menú de navegación -->
-        <nav>
-            <!-- Mensaje de inicio de sesion exitoso -->
-            <?php
-                if(isset($_GET['msg'])){
-                    echo "<p style='color:green;'>".$_GET['msg']."</p>";
-                }
-            ?>
+    <header class="admin-header">
+        <div class="admin-brand">Travel Now Admin</div>
+        <nav class="admin-nav">
             <a href="index.php?controller=login&action=admin">Inicio</a>
             <a href="index.php?controller=propiedad&action=index">Propiedades</a>
             <a href="index.php?controller=reserva&action=history">Historial</a>
             <a href="index.php?controller=reserva&action=host">Reservas</a>
-            <a href="index.php?controller=login&action=logout">Cerrar</a>  
-            <a href="index.php?controller=map&action=index">Mapa</a>
+            <a href="index.php?controller=login&action=logout">Cerrar</a>
+            <span><?= htmlspecialchars($_SESSION['user'] ?? '') ?></span>
+            <span><?= htmlspecialchars($_SESSION['rol'] ?? '') ?></span>
         </nav>
-         <?= $_SESSION['user']; ?>
-
-    <!-- Muestra el rol del usuario -->
-    <?= $_SESSION['rol']; ?>
-
-        <!-- Botones del header (Administrador + Perfil) -->
-        <div class="header-buttons">
-
-                       <a href="Admin/perfilhost.php">
-                <button class="btn">Perfil</button>
-            </a>
-            
-
-        </div>
     </header>
-    
-<h1>Reservaciones</h1>
+
+    <h1>Reservaciones</h1>
 
     <?php if (isset($_GET['msg'])): ?>
         <p class="feedback-success"><?= htmlspecialchars($_GET['msg']) ?></p>
@@ -237,6 +201,3 @@ if (!isset($datos)) {
     <script src="public/js/reservas-tabs.js"></script>
 </body>
 </html>
-
-
-

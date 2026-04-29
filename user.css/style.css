@@ -120,6 +120,21 @@
     border-radius: 15px;
 }
 
+.card-img-tag {
+    object-fit: cover;
+    display: block;
+}
+
+.property-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.property-card-clickable {
+    cursor: pointer;
+}
+
 .card p {
     margin-top: 10px;
     font-size: 14px;
@@ -409,6 +424,153 @@ background-image: url(../public/css/img/turismo.jpg);
     color: #888;
 }
 
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.modal-close {
+    border: none;
+    background: #ececec;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.modal-note {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.feedback-ok {
+    color: green;
+}
+
+.reserve-trigger {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.modal-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 14px 0 18px;
+}
+
+.modal-summary .item {
+    background: #f7f9ef;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.modal-occupied {
+    margin: 10px 0 18px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+
+.modal-occupied p {
+    margin: 6px 0;
+}
+
+.modal-total {
+    margin: 14px 0 18px;
+    padding: 14px;
+    border-radius: 12px;
+    background: #eef6d9;
+}
+
+.modal-total strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.modal-total-method {
+    display: block;
+    margin-top: 6px;
+    color: #4f5d2a;
+    font-size: 13px;
+}
+
+.modal-total-state {
+    display: block;
+    margin-top: 4px;
+    color: #5f5f5f;
+    font-size: 13px;
+}
+
+.modal-error {
+    display: none;
+    margin: 10px 0 14px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #ffe5e5;
+    color: #9b1c1c;
+    font-size: 14px;
+}
+
+.modal-error.active {
+    display: block;
+}
+
+.modal-field {
+    margin: 12px 0;
+}
+
+.modal-payment-note {
+    margin-top: 8px;
+    color: #5f5f5f;
+    font-size: 13px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
 .overview {
     margin-top: 20px;
     display: flex;
@@ -423,6 +585,18 @@ background-image: url(../public/css/img/turismo.jpg);
 
 .description {
     margin-top: 30px;
+}
+
+.feedback-ok {
+    color: green;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.feedback-error {
+    color: red;
+    margin: 10px 0;
+    font-weight: bold;
 }
 
 .reservation-box {
@@ -444,6 +618,27 @@ background-image: url(../public/css/img/turismo.jpg);
     color: #333;
 }
 
+.modal-launch-area {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.modal-launch-area:hover,
+.modal-launch-area:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    background: #f8fbef;
+    outline: none;
+}
+
+.price-launch-hint {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #65753b;
+    font-weight: 600;
+}
+
 .price-details {
     margin-top: 15px;
     font-size: 14px;
@@ -454,10 +649,14 @@ background-image: url(../public/css/img/turismo.jpg);
     margin: 4px 0;
 }
 
+.price-details-block {
+    margin-bottom: 18px;
+}
+
 .reserve-btn {
     width: 100%;
     padding: 12px 0;
-    background: #222;
+    background: linear-gradient(135deg, #111, #40531b);
     color: white;
     font-size: 16px;
     border-radius: 30px; 
@@ -465,10 +664,12 @@ background-image: url(../public/css/img/turismo.jpg);
     cursor: pointer;
     margin-top: 18px;
     transition: 0.3s;
+    font-weight: 700;
+    box-shadow: 0 10px 22px rgba(64, 83, 27, 0.25);
 }
 
 .reserve-btn:hover {
-    background: #000;
+    background: linear-gradient(135deg, #222, #516a22);
 }
 
 .reservation-actions {
@@ -509,10 +710,198 @@ background-image: url(../public/css/img/turismo.jpg);
     margin-top: 20px;
 }
 
+.review-item-card {
+    margin-bottom: 20px;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
 .review-photo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.payment-summary {
+    margin: 12px 0;
+    padding: 14px;
+    border-radius: 12px;
+    background: #f7f9ef;
+}
+
+.payment-summary p {
+    margin: 6px 0;
+}
+
+.payment-receipt {
+    margin: 14px 0;
+    padding: 16px;
+    border: 1px dashed #c9d3a7;
+    border-radius: 14px;
+    background: #fffdf4;
+}
+
+.payment-receipt-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.payment-receipt-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.payment-receipt-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.payment-receipt-title h5 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.payment-receipt-subtitle {
+    color: #5f5f5f;
+    font-size: 13px;
+}
+
+.receipt-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 16px;
+}
+
+.receipt-item {
+    font-size: 14px;
+}
+
+.receipt-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #3d4c18;
+}
+
+.receipt-total {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #e6e0c8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.receipt-action-button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.receipt-action-print {
+    background: #2e7d32;
+    color: #fff;
+}
+
+.receipt-action-pdf {
+    background: #254a91;
+    color: #fff;
+}
+
+.payment-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.payment-chip-pendiente {
+    background: #fff1bf;
+    color: #7d5d00;
+}
+
+.payment-chip-pagado {
+    background: #dff4d8;
+    color: #1d6b2f;
+}
+
+.payment-chip-cancelado {
+    background: #f3d6d6;
+    color: #8e2727;
+}
+
+.payment-chip-reembolsado {
+    background: #dce9ff;
+    color: #244d8f;
+}
+
+.payment-chip-en-revision {
+    background: #efe3ff;
+    color: #6231a5;
+}
+
+.payment-chip-fallido {
+    background: #ffd9d9;
+    color: #8d1f1f;
+}
+
+.payment-form {
+    margin-top: 10px;
+}
+
+.payment-select,
+.payment-input {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.payment-input {
+    border: 1px solid #ccc;
+}
+
+.payment-button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #2e7d32;
+    color: #fff;
+}
+
+.payment-note {
+    margin-top: 8px;
+    color: #5f5f5f;
+    font-size: 13px;
+}
+
+.cancel-form {
+    margin-top: 10px;
+}
+
+.cancel-button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #b23b3b;
+    color: #fff;
 }
 body {
     font-family: Arial, sans-serif;

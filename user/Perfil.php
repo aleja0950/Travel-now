@@ -32,10 +32,10 @@
             <img src="../public/css/img/user.jpg" alt="User Photo" class="profile-img">
 
             <!-- Nombre del usuario -->
-            <h2 class="profile-name">Kelly Alejandra</h2>
+            <h2> Usuario: <?= $_SESSION['user'] ?? ''; ?></h2>
 
             <!-- Email del usuario -->
-            <p class="profile-email">kelly@example.com</p>
+            <p>correo:<?= $_SESSION['correo'] ?? ''; ?> </p>
         </div>
 
         <!-- =======================
@@ -45,13 +45,10 @@
             <h3>Información Personal</h3>
 
             <!-- Teléfono -->
-            <p><strong>telefono:</strong> +57 300 123 4567</p>
-
-            <!-- Ciudad -->
-            <p><strong>Ciudad:</strong> La Dorada, Caldas</p>
+            <p><strong>telefono:</strong><?= $_SESSION['telefono'] ?? ''; ?> </p>
 
             <!-- Rol del usuario -->
-            <p><strong>Rol:</strong> Cliente</p>
+            <p><strong>Rol:</strong> <?= $_SESSION['rol'] ?? ''; ?></p>
         </div>
 
         <!-- =======================
@@ -60,7 +57,8 @@
         <div class="profile-actions">
 
             <!-- Botón editar -->
-            <button class="btn edit">Editar Perfil</button>
+              <a href="../index.php?controller=user&action=editar&id=<?= $_SESSION['Id_user'] ?>">
+               <button class="btn edit">Editar Perfil</button></a>
 
             <!-- Botón ingresar -->
             <button class="btn logout">Ingresar</button>

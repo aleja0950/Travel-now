@@ -36,7 +36,7 @@
         <label>contraseña</label>
         <input type="password" minlength="8" name="contrasena" required>
 
-        <input type="submit" value="Guardar">
+        <input type="submit" value="Crear cuenta">
     </form>
         
          <p id="mensaje" style="color:green;"></p>

@@ -8,6 +8,84 @@ body {
     background: #f9ffd7b7;          /* Fondo amarillo suave */
 }
 
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: #eef2d3;
+    border-radius: 14px;
+    margin-bottom: 18px;
+}
+
+.admin-brand {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.feedback-success {
+    color: green;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.stat-pill {
+    background: #eef2d3;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.filter-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.filter-control {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.filter-button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2e7d32;
+    color: #fff;
+}
+
+.filter-link {
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #ccc;
+    color: #000;
+    text-decoration: none;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.tab-panel-hidden {
+    display: none;
+}
+
 /* ------------------------------------------ */
 /* Título principal */
 /* ------------------------------------------ */
@@ -70,6 +148,11 @@ h1 {
     border-radius: 10px;
 }
 
+.img-box-tag {
+    object-fit: cover;
+    display: block;
+}
+
 /* ------------------------------------------ */
 /* Información de la reserva */
 /* ------------------------------------------ */
@@ -122,4 +205,10 @@ h1 {
 /* Hover para "Rechazar" */
 .reject:hover {
     background-color: #f4fd9d;   /* Más brillante */
+}
+
+.status-note {
+    margin-top: 10px;
+    color: #a15c00;
+    font-weight: bold;
 }

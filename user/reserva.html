@@ -7,7 +7,7 @@
     <!-- =======================
          HOJA DE ESTILOS
     ======================== -->
-    <link rel="stylesheet" href="../user.css/style.css">
+    <link rel="stylesheet" href="user.css/style.css">
 
     <title>Reserva</title>
 </head>
@@ -17,20 +17,20 @@
          HEADER / MENÚ SUPERIOR
     ======================== -->
     <header class="header">
-        <img src="../public/css/img/travel_now_no_bg.png" class="logo-img" alt="Logo">
+        <img src="public/css/img/travel_now_no_bg.png" class="logo-img" alt="Logo">
 
         <!-- Navegación -->
         <nav>
-            <a href="user/home.php">Inicio</a>
-            <a href="reserva.html">Reserva</a>
-            <a href="search.html">Buscar</a>
+            <a href="index.php?controller=login&action=user">Inicio</a>
+            <a href="index.php?controller=reserva&action=index">Reserva</a>
+            <a href="index.php?controller=search&action=index">Buscar</a>
         </nav>
 
         <!-- Botones del header -->
-        <a href="form.html">
+        <a href="index.php?controller=user&action=crear">
             <button class="btn">Conviertete en Huesped</button>
         </a>
-        <a href="Perfil.html">
+        <a href="user/Perfil.php">
             <button class="user-icon">☺</button>
         </a>
     </header>
@@ -49,11 +49,11 @@
 
             <!-- Imagen grande + info -->
             <div class="gallery-left">
-                <img src="../public/css/img/HOST.png" class="big-img">
+                <img src="public/css/img/HOST.png" class="big-img">
 
                 <!-- Información del Host -->
                 <div class="host-info">
-                    <img src="../public/css/img/HOST.png" class="host-photo">
+                    <img src="public/css/img/HOST.png" class="host-photo">
                     <div>
                         <p class="host-name">Habitacion completa</p>
                         <p class="host-price">Precio: $100.000 - $50.000</p>
@@ -63,9 +63,9 @@
 
             <!-- Imágenes pequeñas -->
             <div class="gallery-right">
-                <img src="../public/css/img/habitacion1.jpg" class="small-img">
-                <img src="../public/css/img/habitacion2.png" class="small-img">
-                <img src="../public/css/img/imagen3.jpg" class="small-img">
+                <img src="public/css/img/habitacion1.jpg" class="small-img">
+                <img src="public/css/img/habitacion2.png" class="small-img">
+                <img src="public/css/img/imagen3.jpg" class="small-img">
             </div>
 
         </section>
@@ -159,7 +159,7 @@
 
             <!-- Reseña 1 -->
             <div class="review-item">
-                <img src="../public/css/img/user.jpg" class="review-photo">
+                <img src="public/css/img/user.jpg" class="review-photo">
                 <div>
                     <h4>Alejandro Olaya</h4>
                     <p>May 12 2024</p>
@@ -169,7 +169,7 @@
 
             <!-- Reseña 2 -->
             <div class="review-item">
-                <img src="../public/css/img/user.jpg" class="review-photo">
+                <img src="public/css/img/user.jpg" class="review-photo">
                 <div>
                     <h4>Valentina Giraldo</h4>
                     <p>jun 30 2024</p>
@@ -183,7 +183,7 @@
     <!-- =======================
          JAVASCRIPT
     ======================== -->
-    <script src="moviiento.js"></script>
+    <script src="public/css/moviiento.js"></script>
 
 </body>
 </html>
