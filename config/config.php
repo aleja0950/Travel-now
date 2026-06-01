@@ -5,8 +5,8 @@ class Database {
     public static function conectar(){
         $conexion= new mysqli(
             "localhost",
-            "root",
-            "",
+            "victor",
+            "27Vmrs",
             "travelnow1"
         );
         if($conexion ->connect_errno){

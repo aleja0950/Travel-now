@@ -2,6 +2,7 @@
 // Se incluye el modelo de autenticación
 require_once __DIR__ . "/../models/auth.php";
 require_once __DIR__ . "/../models/search.php";
+require_once __DIR__ . "/../models/dashboard.php";
 
 // Se define la clase authcontroller
 class authcontroller
@@ -58,11 +59,18 @@ class authcontroller
         header("location: index.php");
     }
 
-    // Método para mostrar la vista del administrador
+    // Método para mostrar el dashboard del administrador
     public function admin()
     {
-        // Carga la vista del panel de administrador
-        require_once __DIR__ . "/../Admin/hostpage.php";
+        if (($_SESSION['rol'] ?? '') !== 'admin') {
+            header("location: index.php?controller=login&action=login");
+            exit;
+        }
+
+        $dashboard = new dashboard();
+        $resumen = $dashboard->GetResumen();
+
+        require_once __DIR__ . "/../views/admin/dashboard.php";
     }
     // Método para mostrar la vista del user
     public function user()

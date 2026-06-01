@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/../models/reserva.php";
 require_once __DIR__ . "/../models/pago.php";
+require_once __DIR__ . "/../models/paquete.php";
 
 class reservacontroller
 {
@@ -67,7 +68,9 @@ class reservacontroller
             $pago->AsegurarPagoPendiente(
                 $guardar,
                 $_POST['id_habitacion'],
-                $_POST['metodo_pago'] ?? 'por definir'
+                $_POST['metodo_pago'] ?? 'por definir',
+                $_POST['fecha_ingreso'] ?? null,
+                $_POST['fecha_salida'] ?? null
             );
 
             header("location: index.php?controller=reserva&action=index&id=" . $_POST['id_habitacion'] . "&msg=reserva guardada");
@@ -77,17 +80,33 @@ class reservacontroller
         header("location: index.php?controller=reserva&action=index");
     }
 
- public function host()
-{
-    $reserva = new reserva();
-    $estado = $_GET['estado'] ?? '';
-    $desde = $_GET['desde'] ?? '';
-    $hasta = $_GET['hasta'] ?? '';
-    $totales = $reserva->GetReservasHostFiltradas('', '', '');
-    $datos = $reserva->GetReservasHostFiltradas($estado, $desde, $hasta);
+    public function host()
+    {
+        $reserva = new reserva();
+        $paquete = new paquete();
+        $estado = $_GET['estado'] ?? '';
+        $desde = $_GET['desde'] ?? '';
+        $hasta = $_GET['hasta'] ?? '';
 
-    require_once __DIR__ . "/../views/admin/reservas.php";
-}
+        $habitaciones_totales = $reserva->GetReservasHostFiltradas('', '', '');
+        $paquetes_totales = $paquete->GetReservasPaqueteHostFiltradas('', '', '');
+        $habitaciones_datos = $reserva->GetReservasHostFiltradas($estado, $desde, $hasta);
+        $paquetes_datos = $paquete->GetReservasPaqueteHostFiltradas($estado, $desde, $hasta);
+
+        foreach (['upcoming', 'past', 'rejected'] as $grupo) {
+            foreach ($habitaciones_totales[$grupo] as $indice => $item) {
+                $habitaciones_totales[$grupo][$indice]['tipo_reserva'] = 'habitacion';
+            }
+            foreach ($habitaciones_datos[$grupo] as $indice => $item) {
+                $habitaciones_datos[$grupo][$indice]['tipo_reserva'] = 'habitacion';
+            }
+        }
+
+        $totales = $paquete->CombinarReservasHost($habitaciones_totales, $paquetes_totales);
+        $datos = $paquete->CombinarReservasHost($habitaciones_datos, $paquetes_datos);
+
+        require_once __DIR__ . "/../views/admin/reservas.php";
+    }
     public function aprobar()
     {
         $reserva = new reserva();
@@ -186,12 +205,16 @@ class reservacontroller
 
     public function misreservas()
     {
-        // Combina reservas, pagos y politica de cancelacion estimada
-        // para mostrarle al usuario su estado completo en una sola vista.
+        // Combina reservas de habitacion y paquetes con sus pagos.
         $reserva = new reserva();
+        $paquete = new paquete();
         $pago = new pago();
-        $datos = $reserva->GetMisReservas($_SESSION['Id_user'] ?? 0);
-        $pagos_reserva = $pago->GetPagosMapByReservasUsuario($_SESSION['Id_user'] ?? 0);
+        $id_user = $_SESSION['Id_user'] ?? 0;
+
+        $datos = $reserva->GetMisReservas($id_user);
+        $paquetes = $paquete->GetMisReservasPaquete($id_user);
+        $pagos_reserva = $pago->GetPagosMapByReservasUsuario($id_user);
+        $pagos_paquete = $pago->GetPagosMapByReservasPaqueteUsuario($id_user);
         $politicas_cancelacion = [];
 
         foreach ($datos as $item) {
@@ -204,6 +227,10 @@ class reservacontroller
             $monto_pago = (int) ($pagos_reserva[$item['Id_reserva']]['monto'] ?? 0);
             $detalle['monto_estimado_reembolso'] = (int) round($monto_pago * (($detalle['porcentaje_reembolso'] ?? 0) / 100));
             $politicas_cancelacion[$item['Id_reserva']] = $detalle;
+        }
+
+        foreach ($paquetes as $indice => $item) {
+            $paquetes[$indice]['extras_detalle'] = $paquete->NombresServiciosPorIds($item['servicios_extra'] ?? '');
         }
 
         require_once __DIR__ . "/../views/reserva/misreservas.php";

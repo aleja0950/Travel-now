@@ -17,6 +17,7 @@ class pago
         $sql = "SELECT precio
                 FROM precio
                 WHERE Id_habitacion = $id_habitacion
+                ORDER BY Id_precio DESC
                 LIMIT 1";
 
         $resul = $this->travelnow1->query($sql);
@@ -30,7 +31,29 @@ class pago
         return (int) ($datos['precio'] ?? 0);
     }
 
-    public function AsegurarPagoPendiente($id_reserva, $id_habitacion, $metodo_pago = 'por definir')
+    public function CalcularNochesEstadia($fecha_ingreso, $fecha_salida)
+    {
+        $ingreso = strtotime($fecha_ingreso);
+        $salida = strtotime($fecha_salida);
+
+        if ($ingreso === false || $salida === false || $salida <= $ingreso) {
+            return 1;
+        }
+
+        $diferencia = $salida - $ingreso;
+
+        return max(1, (int) ceil($diferencia / 86400));
+    }
+
+    public function CalcularMontoEstadia($fecha_ingreso, $fecha_salida, $id_habitacion)
+    {
+        $precio_noche = $this->GetMontoByHabitacion($id_habitacion);
+        $noches = $this->CalcularNochesEstadia($fecha_ingreso, $fecha_salida);
+
+        return $noches * $precio_noche;
+    }
+
+    public function AsegurarPagoPendiente($id_reserva, $id_habitacion, $metodo_pago = 'por definir', $fecha_ingreso = null, $fecha_salida = null)
     {
         // Crea el pago inicial apenas nace la reserva y deja registrado
         // desde el comienzo el metodo que el usuario eligio en el modal.
@@ -49,12 +72,42 @@ class pago
             return true;
         }
 
-        $monto = $this->GetMontoByHabitacion($id_habitacion);
+        if ($fecha_ingreso !== null && $fecha_salida !== null) {
+            $monto = $this->CalcularMontoEstadia($fecha_ingreso, $fecha_salida, $id_habitacion);
+        } else {
+            $monto = $this->GetMontoByHabitacion($id_habitacion);
+        }
+
         $referencia = "RES-" . $id_reserva;
         $metodo_pago_sql = $this->travelnow1->real_escape_string($metodo_pago !== '' ? $metodo_pago : 'por definir');
 
         $sql = "INSERT INTO pago(Id_reserva, metodo_pago, monto, estado_pago, fecha_pago, referencia)
                 VALUES($id_reserva, '$metodo_pago_sql', $monto, 'pendiente', NULL, '$referencia')";
+
+        return $this->travelnow1->query($sql);
+    }
+
+    public function AsegurarPagoPendientePaquete($id_reserva_paquete, $monto, $metodo_pago = 'por definir')
+    {
+        $id_reserva_paquete = (int) $id_reserva_paquete;
+        $monto = (int) $monto;
+        $metodo_pago = trim((string) $metodo_pago);
+        $metodo_pago_sql = $this->travelnow1->real_escape_string($metodo_pago !== '' ? $metodo_pago : 'por definir');
+        $referencia = 'PKG-' . $id_reserva_paquete;
+
+        $sql = "SELECT Id_pago
+                FROM pago
+                WHERE Id_reserva_paquete = $id_reserva_paquete
+                LIMIT 1";
+
+        $resul = $this->travelnow1->query($sql);
+
+        if ($resul && $resul->num_rows > 0) {
+            return true;
+        }
+
+        $sql = "INSERT INTO pago(Id_reserva_paquete, metodo_pago, monto, estado_pago, fecha_pago, referencia)
+                VALUES($id_reserva_paquete, '$metodo_pago_sql', $monto, 'pendiente', NULL, '$referencia')";
 
         return $this->travelnow1->query($sql);
     }
@@ -481,6 +534,41 @@ class pago
 
         foreach ($datos as $item) {
             $mapa[$item['Id_reserva']] = $item;
+        }
+
+        return $mapa;
+    }
+
+    public function GetPagosMapByReservasPaqueteUsuario($id_user)
+    {
+        $id_user = (int) $id_user;
+
+        $sql = "SELECT
+                    pago.Id_pago,
+                    pago.Id_reserva_paquete,
+                    pago.metodo_pago,
+                    pago.monto,
+                    pago.monto_reembolso,
+                    pago.estado_pago,
+                    pago.fecha_pago,
+                    pago.referencia,
+                    pago.detalle_reembolso
+                FROM pago
+                INNER JOIN reserva_paquete ON pago.Id_reserva_paquete = reserva_paquete.Id_reserva_paquete
+                WHERE reserva_paquete.Id_user = $id_user
+                ORDER BY reserva_paquete.fecha_inicio DESC";
+
+        $resul = $this->travelnow1->query($sql);
+
+        if (!$resul) {
+            return [];
+        }
+
+        $mapa = [];
+        $datos = $resul->fetch_all(MYSQLI_ASSOC);
+
+        foreach ($datos as $item) {
+            $mapa[$item['Id_reserva_paquete']] = $item;
         }
 
         return $mapa;

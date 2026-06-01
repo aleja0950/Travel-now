@@ -1,9 +1,80 @@
-/* Estilo general del cuerpo de la página */
+/* --- Responsive Styles --- */
+@media (max-width: 1024px) {
+    body {
+        margin: 20px;
+    }
+    .admin-header {
+        padding: 12px 10px;
+    }
+    .stats-row {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+    }
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 5px;
+    }
+    .admin-nav {
+        margin-top: 10px;
+        width: 100%;
+        gap: 8px;
+    }
+    .stats-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .filter-form {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: 2px;
+        padding: 0;
+    }
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6px 2px;
+    }
+    .admin-brand {
+        font-size: 16px;
+    }
+    .admin-nav {
+        font-size: 13px;
+        gap: 4px;
+    }
+    .stats-row {
+        gap: 4px;
+    }
+    .stat-pill {
+        padding: 8px 8px;
+        font-size: 13px;
+    }
+    .filter-form {
+        gap: 4px;
+    }
+    .filter-control {
+        font-size: 13px;
+        padding: 6px;
+    }
+}
+/* =========================
+   ESTILOS GENERALES
+========================= */
 body {
-    font-family: Arial, sans-serif; /* Fuente principal */
-    margin: 40px;                  /* Separación alrededor del contenido */
-    color: #333;                   /* Color del texto */
-    background-color: #f8fcd277;   /* Fondo suave verde claro */
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    color: #333;
+    background-color: #f8fcd277;
 }
 
 .admin-header {
@@ -183,4 +254,133 @@ h1 {
 .amount {
     font-size: 15px;
     font-weight: 600;
+}
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 1024px) {
+    body {
+        margin: 20px;
+    }
+    .admin-header {
+        padding: 12px 10px;
+    }
+    .stats-row {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .admin-nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .stats-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .filter-form {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 8px;
+    }
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 5px;
+        gap: 8px;
+    }
+    .admin-brand {
+        font-size: 17px;
+    }
+    .admin-nav {
+        font-size: 14px;
+        gap: 6px;
+    }
+    .stats-row {
+        gap: 6px;
+    }
+    .stat-pill {
+        padding: 8px 8px;
+        font-size: 13px;
+    }
+    .filter-form {
+        gap: 6px;
+    }
+    .filter-control {
+        font-size: 13px;
+        padding: 6px;
+    }
+    .tabs {
+        font-size: 13px;
+        gap: 6px;
+    }
+    .transaction-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: 2px;
+        padding: 0;
+    }
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6px 2px;
+        gap: 4px;
+    }
+    .admin-brand {
+        font-size: 15px;
+    }
+    .admin-nav {
+        font-size: 12px;
+        gap: 3px;
+    }
+    .stats-row {
+        gap: 3px;
+    }
+    .stat-pill {
+        padding: 6px 6px;
+        font-size: 12px;
+    }
+    .filter-form {
+        gap: 3px;
+    }
+    .filter-control {
+        font-size: 12px;
+        padding: 4px;
+    }
+    .tabs {
+        font-size: 12px;
+        gap: 3px;
+    }
+    .transaction-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+        padding: 6px 4px;
+    }
+    h1 {
+        font-size: 18px;
+    }
 }

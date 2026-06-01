@@ -5,22 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservaciones</title>
     <link rel="stylesheet" href="public/css/reserve.css">
+    <link rel="stylesheet" href="public/css/dashboard.css">
 </head>
-<body>
-    <header class="admin-header">
-        <div class="admin-brand">Travel Now Admin</div>
-        <nav class="admin-nav">
-            <a href="index.php?controller=login&action=admin">Inicio</a>
-            <a href="index.php?controller=propiedad&action=index">Propiedades</a>
-            <a href="index.php?controller=reserva&action=history">Historial</a>
-            <a href="index.php?controller=reserva&action=host">Reservas</a>
-            <a href="index.php?controller=login&action=logout">Cerrar</a>
-            <span><?= htmlspecialchars($_SESSION['user'] ?? '') ?></span>
-            <span><?= htmlspecialchars($_SESSION['rol'] ?? '') ?></span>
-        </nav>
-    </header>
+<body class="dashboard-body">
+    <?php $nav_activo = 'reservas'; require_once __DIR__ . '/_nav.php'; ?>
 
     <h1>Reservaciones</h1>
+    <p>Incluye reservas de habitaciones y de paquetes turisticos.</p>
 
     <?php if (isset($_GET['msg'])): ?>
         <p class="feedback-success"><?= htmlspecialchars($_GET['msg']) ?></p>
@@ -80,37 +71,61 @@
     <div id="upcomingTab" class="tab-panel">
         <?php if (count($datos['upcoming']) > 0): ?>
             <?php foreach ($datos['upcoming'] as $item): ?>
+                <?php $es_paquete = (($item['tipo_reserva'] ?? 'habitacion') === 'paquete'); ?>
                 <div class="reservation">
-                    <img class="img-box img-box-tag" src="public/css/img/habitacion1.jpg" alt="Habitacion">
+                    <img class="img-box img-box-tag" src="public/css/img/<?= $es_paquete ? 'paquete.jpg' : 'habitacion1.jpg' ?>" alt="Reserva">
 
                     <div class="info">
-                        <div class="title"><?= htmlspecialchars($item['nombre']) ?></div>
-                        <div>
-                            Entrada: <?= htmlspecialchars($item['fecha_ingreso']) ?>
-                            &nbsp;&nbsp; Salida: <?= htmlspecialchars($item['fecha_salida']) ?>
+                        <div class="title">
+                            <?= htmlspecialchars($item['nombre']) ?>
+                            <?php if ($es_paquete): ?>
+                                <span class="stat-pill">Paquete turistico</span>
+                            <?php endif ?>
                         </div>
                         <div>
-                            Habitacion: <?= htmlspecialchars($item['id_habitacion']) ?>
-                            &nbsp;&nbsp; Tipo: <?= htmlspecialchars($item['tipo_habitacion']) ?>
+                            <?= $es_paquete ? 'Inicio' : 'Entrada' ?>: <?= htmlspecialchars($item['fecha_ingreso']) ?>
+                            &nbsp;&nbsp; <?= $es_paquete ? 'Fin' : 'Salida' ?>: <?= htmlspecialchars($item['fecha_salida']) ?>
                         </div>
-                        <div>
-                            Servicio: <?= htmlspecialchars($item['servicio_especial']) ?>
-                            &nbsp;&nbsp; Precio: $<?= number_format((int) ($item['precio'] ?? 0), 0, ',', '.') ?>
-                        </div>
+                        <?php if ($es_paquete): ?>
+                            <div>Cliente: <?= htmlspecialchars(trim(($item['nombre_usuario'] ?? '') . ' ' . ($item['apellido'] ?? ''))) ?></div>
+                            <div>Total paquete: $<?= number_format((int) ($item['monto_total'] ?? 0), 0, ',', '.') ?></div>
+                        <?php else: ?>
+                            <div>
+                                Habitacion: <?= htmlspecialchars($item['id_habitacion']) ?>
+                                &nbsp;&nbsp; Tipo: <?= htmlspecialchars($item['tipo_habitacion']) ?>
+                            </div>
+                            <div>
+                                Servicio: <?= htmlspecialchars($item['servicio_especial']) ?>
+                                &nbsp;&nbsp; Precio: $<?= number_format((int) ($item['precio'] ?? 0), 0, ',', '.') ?>
+                            </div>
+                        <?php endif ?>
                         <div>Estado: <?= htmlspecialchars($item['estado_reserva']) ?></div>
-                        <div>Ubicacion: <?= htmlspecialchars($item['ubicacion']) ?></div>
+                        <?php if (!$es_paquete): ?>
+                            <div>Ubicacion: <?= htmlspecialchars($item['ubicacion']) ?></div>
+                        <?php endif ?>
                     </div>
 
                     <div class="buttons">
                         <?php if ($item['estado_reserva'] === 'pendiente'): ?>
-                            <form action="index.php?controller=reserva&action=aprobar" method="post" class="inline-form">
-                                <input type="hidden" name="id_reserva" value="<?= htmlspecialchars($item['Id_reserva']) ?>">
-                                <button class="btn approve" type="submit">Aprobar</button>
-                            </form>
-                            <form action="index.php?controller=reserva&action=rechazar" method="post" class="inline-form">
-                                <input type="hidden" name="id_reserva" value="<?= htmlspecialchars($item['Id_reserva']) ?>">
-                                <button class="btn reject" type="submit">Rechazar</button>
-                            </form>
+                            <?php if ($es_paquete): ?>
+                                <form action="index.php?controller=paquete&action=aprobar" method="post" class="inline-form">
+                                    <input type="hidden" name="id_reserva_paquete" value="<?= (int) $item['Id_reserva_paquete'] ?>">
+                                    <button class="btn approve" type="submit">Aprobar</button>
+                                </form>
+                                <form action="index.php?controller=paquete&action=rechazar" method="post" class="inline-form">
+                                    <input type="hidden" name="id_reserva_paquete" value="<?= (int) $item['Id_reserva_paquete'] ?>">
+                                    <button class="btn reject" type="submit">Rechazar</button>
+                                </form>
+                            <?php else: ?>
+                                <form action="index.php?controller=reserva&action=aprobar" method="post" class="inline-form">
+                                    <input type="hidden" name="id_reserva" value="<?= htmlspecialchars($item['Id_reserva']) ?>">
+                                    <button class="btn approve" type="submit">Aprobar</button>
+                                </form>
+                                <form action="index.php?controller=reserva&action=rechazar" method="post" class="inline-form">
+                                    <input type="hidden" name="id_reserva" value="<?= htmlspecialchars($item['Id_reserva']) ?>">
+                                    <button class="btn reject" type="submit">Rechazar</button>
+                                </form>
+                            <?php endif ?>
                         <?php else: ?>
                             <button class="btn approve" type="button"><?= htmlspecialchars($item['estado_reserva']) ?></button>
                         <?php endif ?>
@@ -131,11 +146,15 @@
     <div id="pastTab" class="tab-panel tab-panel-hidden">
         <?php if (count($datos['past']) > 0): ?>
             <?php foreach ($datos['past'] as $item): ?>
+                <?php $es_paquete = (($item['tipo_reserva'] ?? 'habitacion') === 'paquete'); ?>
                 <div class="reservation">
-                    <img class="img-box img-box-tag" src="public/css/img/habitacion2.png" alt="Habitacion">
+                    <img class="img-box img-box-tag" src="public/css/img/<?= $es_paquete ? 'paquete.jpg' : 'habitacion2.png' ?>" alt="Reserva">
 
                     <div class="info">
-                        <div class="title"><?= htmlspecialchars($item['nombre']) ?></div>
+                        <div class="title">
+                            <?= htmlspecialchars($item['nombre']) ?>
+                            <?php if ($es_paquete): ?><span class="stat-pill">Paquete</span><?php endif ?>
+                        </div>
                         <div>
                             Entrada: <?= htmlspecialchars($item['fecha_ingreso']) ?>
                             &nbsp;&nbsp; Salida: <?= htmlspecialchars($item['fecha_salida']) ?>
@@ -171,12 +190,18 @@
     <div id="rejectedTab" class="tab-panel tab-panel-hidden">
         <?php if (count($datos['rejected']) > 0): ?>
             <?php foreach ($datos['rejected'] as $item): ?>
+                <?php $es_paquete = (($item['tipo_reserva'] ?? 'habitacion') === 'paquete'); ?>
                 <div class="reservation">
-                    <img class="img-box img-box-tag" src="public/css/img/imagen3.jpg" alt="Habitacion">
+                    <img class="img-box img-box-tag" src="public/css/img/imagen3.jpg" alt="Reserva">
 
                     <div class="info">
-                        <div class="title"><?= htmlspecialchars($item['nombre']) ?></div>
-                        <div>Habitacion: <?= htmlspecialchars($item['id_habitacion']) ?></div>
+                        <div class="title">
+                            <?= htmlspecialchars($item['nombre']) ?>
+                            <?php if ($es_paquete): ?><span class="stat-pill">Paquete</span><?php endif ?>
+                        </div>
+                        <?php if (!$es_paquete): ?>
+                            <div>Habitacion: <?= htmlspecialchars($item['id_habitacion']) ?></div>
+                        <?php endif ?>
                         <div>Servicio: <?= htmlspecialchars($item['servicio_especial']) ?></div>
                         <div>Estado: <?= htmlspecialchars($item['estado_reserva']) ?></div>
                         <?php if (($item['estado_reserva'] ?? '') === 'cancelada'): ?>

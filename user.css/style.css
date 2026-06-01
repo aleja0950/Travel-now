@@ -1,3 +1,109 @@
+/* --- Responsive Styles --- */
+@media (max-width: 1024px) {
+    .header {
+        padding: 20px 20px;
+    }
+    .listing-section {
+        padding: 30px 10px;
+    }
+    .gallery {
+        flex-direction: column;
+    }
+    .gallery-left, .gallery-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 10px;
+    }
+    .header nav {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .header-buttons {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .cards-container, .grid {
+        flex-direction: column;
+        display: flex;
+        gap: 15px;
+    }
+    .card, .property-card {
+        width: 100%;
+        min-width: 0;
+    }
+    .gallery {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .gallery-left, .gallery-right {
+        width: 100%;
+    }
+    .small-img, .big-img {
+        height: 180px;
+    }
+    .reservation-box {
+        width: 100%;
+        position: static;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 5px;
+    }
+    .logo-img {
+        width: 100px;
+    }
+    .header nav a {
+        font-size: 12px;
+        margin: 0 5px;
+    }
+    .listing-section, .find-section, .container {
+        padding: 10px 2px;
+        width: 100%;
+    }
+    .cards-container, .grid {
+        gap: 10px;
+    }
+    .card, .property-card {
+        width: 100%;
+        min-width: 0;
+        padding: 10px;
+    }
+    .gallery {
+        gap: 5px;
+    }
+    .gallery-left, .gallery-right {
+        width: 100%;
+    }
+    .big-img, .small-img {
+        height: 120px;
+    }
+    .reservation-box {
+        width: 100%;
+        padding: 10px;
+        position: static;
+        margin-top: 10px;
+    }
+    .profile-container {
+        width: 100%;
+        padding: 10px;
+        margin: 20px 0;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -983,4 +1089,38 @@ body {
 
 .btn.logout:hover {
     background: #cfda93;
+}
+/* Tablets */
+@media (max-width: 768px) {
+
+    form {
+        max-width: 90%;
+        padding: 25px;
+    }
+
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    form {
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    input,
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
 }

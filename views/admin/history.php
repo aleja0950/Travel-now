@@ -8,21 +8,11 @@ $datos = $datos ?? [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/history.css">
+    <link rel="stylesheet" href="public/css/dashboard.css">
     <title>Historial de transacciones</title>
 </head>
-<body>
-    <header class="admin-header">
-        <div class="admin-brand">Travel Now Admin</div>
-        <nav class="admin-nav">
-            <a href="index.php?controller=login&action=admin">Inicio</a>
-            <a href="index.php?controller=propiedad&action=index">Propiedades</a>
-            <a href="index.php?controller=reserva&action=history">Historial</a>
-            <a href="index.php?controller=reserva&action=host">Reservas</a>
-            <a href="index.php?controller=login&action=logout">Cerrar</a>
-            <span><?= htmlspecialchars($_SESSION['user'] ?? '') ?></span>
-            <span><?= htmlspecialchars($_SESSION['rol'] ?? '') ?></span>
-        </nav>
-    </header>
+<body class="dashboard-body">
+    <?php $nav_activo = 'historial'; require_once __DIR__ . '/_nav.php'; ?>
 
     <h1>Historial de transacciones</h1>
 
@@ -96,7 +86,7 @@ $datos = $datos ?? [];
         <span class="active" data-tab="completed">completas</span>
         <span data-tab="upcoming">En proceso</span>
         <span data-tab="reverted">Cancelados</span>
-        <span data-tab="gross">Ganancias</span>
+        <span data-tab="gross">Total de costos</span>
     </div>
 
     <div class="line"></div>

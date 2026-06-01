@@ -22,6 +22,7 @@
         <nav>
 
             <a href="index.php?controller=login&action=user">Inicio</a>
+            <a href="index.php?controller=paquete&action=catalogo">Paquetes</a>
             <a href="index.php?controller=reserva&action=index">Reserva</a>
             <a href="index.php?controller=search&action=index">Buscar</a>
             <a href="index.php?controller=reserva&action=misreservas">Mis reservas</a>
@@ -177,15 +178,15 @@
                 <p>Zona cercas</p>
             </div>
 
-            <div class="card">
+            <a href="index.php?controller=paquete&action=catalogo" class="card">
                 <div class="card-img pa1"></div>
                 <p>Paquetes</p>
-            </div>
+            </a>
 
-            <div class="card">
+            <a href="index.php?controller=paquete&action=catalogo" class="card">
                 <div class="card-img turismo1"></div>
                 <p>Turismo</p>
-            </div>
+            </a>
 
 
         </div>

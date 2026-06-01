@@ -11,20 +11,10 @@ $imagenes = $imagenes ?? [];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propiedades</title>
     <link rel="stylesheet" href="public/css/editroom.css">
+    <link rel="stylesheet" href="public/css/dashboard.css">
 </head>
-<body>
-    <header class="admin-header">
-        <div class="admin-brand">Travel Now Admin</div>
-        <nav class="admin-nav">
-            <a href="index.php?controller=login&action=admin">Inicio</a>
-            <a href="index.php?controller=propiedad&action=index">Propiedades</a>
-            <a href="index.php?controller=reserva&action=history">Historial</a>
-            <a href="index.php?controller=reserva&action=host">Reservas</a>
-            <a href="index.php?controller=login&action=logout">Cerrar</a>
-            <span><?= htmlspecialchars($_SESSION['user'] ?? '') ?></span>
-            <span><?= htmlspecialchars($_SESSION['rol'] ?? '') ?></span>
-        </nav>
-    </header>
+<body class="dashboard-body">
+    <?php $nav_activo = 'propiedades'; require_once __DIR__ . '/_nav.php'; ?>
 
     <h2 class="title">Propiedades publicadas</h2>
 
@@ -164,7 +154,6 @@ $imagenes = $imagenes ?? [];
                 <input type="text" id="servicios" name="servicios" value="<?= htmlspecialchars($propiedad_editar['servicios'] ?? 'wifi, tv, bano privado') ?>" required>
 
                 <p class="info-note">Puedes elegir una imagen existente o subir una nueva. Si subes archivo, esa imagen tendra prioridad.</p>
-                 <a href="index.php?controller=map&action=index">Poner ubicacion en el mapa</a><br>
                 <button class="next-btn" id="submit-propiedad" type="submit"><?= $propiedad_editar ? 'Actualizar propiedad' : 'Guardar propiedad' ?></button>
                 <a id="cancelar-edicion-propiedad" href="index.php?controller=propiedad&action=index" class="cancel-edit-link <?= $propiedad_editar ? '' : 'is-hidden' ?>">Cancelar edicion</a>
             </form>

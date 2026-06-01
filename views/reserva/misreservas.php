@@ -12,6 +12,7 @@
 
         <nav>
             <a href="index.php?controller=login&action=user">Inicio</a>
+            <a href="index.php?controller=paquete&action=catalogo">Paquetes</a>
             <a href="index.php?controller=reserva&action=index">Reserva</a>
             <a href="index.php?controller=search&action=index">Buscar</a>
             <a href="index.php?controller=reserva&action=misreservas">Mis reservas</a>
@@ -28,12 +29,136 @@
 
         <section class="title-section">
             <h2>Mis reservas</h2>
-            <p class="location">Solo ves las reservas asociadas a tu usuario autenticado.</p>
+            <p class="location">Habitaciones y paquetes turisticos reservados con tu usuario.</p>
             <p class="location">Los estados de reserva, pagos y acciones privadas se administran aqui.</p>
             <p class="location">Politica actual: pago pendiente con minimo 24 horas; pago realizado con 48 horas para reembolso total, entre 24 y 48 horas para reembolso parcial del 50%.</p>
         </section>
 
+        <?php $paquetes = $paquetes ?? []; ?>
+        <?php $pagos_paquete = $pagos_paquete ?? []; ?>
+
+        <?php if (count($paquetes) > 0): ?>
+            <h3>Paquetes turisticos</h3>
+            <?php foreach ($paquetes as $item): ?>
+                <?php $pago_paquete = $pagos_paquete[$item['Id_reserva_paquete']] ?? null; ?>
+                <?php $extras = $item['extras_detalle'] ?? []; ?>
+                <?php $estado_pago_paquete = $pago_paquete['estado_pago'] ?? 'sin-pago'; ?>
+                <?php $estado_pago_paquete_clase = str_replace(' ', '-', $estado_pago_paquete); ?>
+                <?php $monto_pago_paquete = (int) ($pago_paquete['monto'] ?? $item['monto_total'] ?? 0); ?>
+                <?php $monto_reembolso_paquete = (int) ($pago_paquete['monto_reembolso'] ?? 0); ?>
+                <?php $neto_pago_paquete = max(0, $monto_pago_paquete - $monto_reembolso_paquete); ?>
+                <?php $receipt_id_paquete = 'receipt-paquete-' . (int) $item['Id_reserva_paquete']; ?>
+                <div class="review-item review-item-card">
+                    <img src="public/css/img/<?= htmlspecialchars($item['imagen'] ?? 'paquete.jpg') ?>" class="review-photo" alt="Paquete">
+                    <div>
+                        <h4>Paquete: <?= htmlspecialchars($item['nombre']) ?></h4>
+                        <p>Inicio: <?= htmlspecialchars($item['fecha_inicio']) ?> · Fin: <?= htmlspecialchars($item['fecha_fin']) ?></p>
+                        <p>Duracion: <?= (int) ($item['dias'] ?? 0) ?> dias</p>
+                        <p>Estado de la reserva: <strong><?= htmlspecialchars($item['estado_reserva']) ?></strong></p>
+                        <p>Paquete: $<?= number_format((int) ($item['monto_paquete'] ?? 0), 0, ',', '.') ?> · Extras: $<?= number_format((int) ($item['monto_extras'] ?? 0), 0, ',', '.') ?></p>
+                        <p>Total: $<?= number_format((int) ($item['monto_total'] ?? 0), 0, ',', '.') ?></p>
+                        <?php if (count($extras) > 0): ?>
+                            <p>Servicios adicionales:
+                                <?php foreach ($extras as $extra): ?>
+                                    <?= htmlspecialchars($extra['nombre']) ?> ($<?= number_format((int) ($extra['precio'] ?? 0), 0, ',', '.') ?>),
+                                <?php endforeach ?>
+                            </p>
+                        <?php endif ?>
+                        <?php if ($pago_paquete): ?>
+                            <div class="payment-summary">
+                                <p>Estado del pago:
+                                    <span class="payment-chip payment-chip-<?= htmlspecialchars($estado_pago_paquete_clase) ?>">
+                                        <?= htmlspecialchars($pago_paquete['estado_pago']) ?>
+                                    </span>
+                                </p>
+                                <p>Monto registrado: $<?= number_format((int) ($pago_paquete['monto'] ?? 0), 0, ',', '.') ?></p>
+                                <p>Metodo de pago: <?= htmlspecialchars($pago_paquete['metodo_pago'] ?? $item['metodo_pago'] ?? 'por definir') ?></p>
+                                <p>Comprobante: <?= htmlspecialchars($pago_paquete['referencia'] ?? 'sin comprobante') ?></p>
+                                <p>Fecha de pago: <?= htmlspecialchars($pago_paquete['fecha_pago'] ?? 'pendiente') ?></p>
+                            </div>
+                            <div class="payment-receipt" id="<?= htmlspecialchars($receipt_id_paquete) ?>">
+                                <div class="payment-receipt-title">
+                                    <div class="payment-receipt-brand">
+                                        <img src="public/css/img/travel_now_no_bg.png" alt="Travel Now" class="payment-receipt-logo">
+                                        <div>
+                                            <h5>Recibo de paquete turistico</h5>
+                                            <div class="payment-receipt-subtitle">Travel Now · Paquete #<?= (int) $item['Id_reserva_paquete'] ?> · <?= htmlspecialchars($item['nombre']) ?></div>
+                                        </div>
+                                    </div>
+                                    <span class="payment-chip payment-chip-<?= htmlspecialchars($estado_pago_paquete_clase) ?>">
+                                        <?= htmlspecialchars($pago_paquete['estado_pago']) ?>
+                                    </span>
+                                </div>
+                                <div class="receipt-grid">
+                                    <div class="receipt-item">
+                                        <strong>Comprobante</strong>
+                                        <?= htmlspecialchars($pago_paquete['referencia'] ?? 'sin comprobante') ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Metodo</strong>
+                                        <?= htmlspecialchars($pago_paquete['metodo_pago'] ?? $item['metodo_pago'] ?? 'por definir') ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Fecha de pago</strong>
+                                        <?= htmlspecialchars($pago_paquete['fecha_pago'] ?? 'pendiente') ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Estado de reserva</strong>
+                                        <?= htmlspecialchars($item['estado_reserva']) ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Fecha inicio</strong>
+                                        <?= htmlspecialchars($item['fecha_inicio']) ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Fecha fin</strong>
+                                        <?= htmlspecialchars($item['fecha_fin']) ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Monto paquete</strong>
+                                        $<?= number_format((int) ($item['monto_paquete'] ?? 0), 0, ',', '.') ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Monto extras</strong>
+                                        $<?= number_format((int) ($item['monto_extras'] ?? 0), 0, ',', '.') ?>
+                                    </div>
+                                    <div class="receipt-item">
+                                        <strong>Reembolso</strong>
+                                        $<?= number_format($monto_reembolso_paquete, 0, ',', '.') ?>
+                                    </div>
+                                    <?php if (count($extras) > 0): ?>
+                                        <div class="receipt-item">
+                                            <strong>Servicios extra</strong>
+                                            <?php foreach ($extras as $extra): ?>
+                                                <?= htmlspecialchars($extra['nombre']) ?>,
+                                            <?php endforeach ?>
+                                        </div>
+                                    <?php endif ?>
+                                </div>
+                                <div class="receipt-total">
+                                    <span>Total neto del recibo</span>
+                                    <span>$<?= number_format($neto_pago_paquete, 0, ',', '.') ?></span>
+                                </div>
+                                <div class="receipt-actions">
+                                    <button type="button" class="receipt-action-button receipt-action-print" data-receipt-id="<?= htmlspecialchars($receipt_id_paquete) ?>" data-receipt-title="Recibo paquete #<?= (int) $item['Id_reserva_paquete'] ?>">
+                                        Imprimir recibo
+                                    </button>
+                                    <button type="button" class="receipt-action-button receipt-action-pdf" data-receipt-id="<?= htmlspecialchars($receipt_id_paquete) ?>" data-receipt-title="Recibo paquete #<?= (int) $item['Id_reserva_paquete'] ?>">
+                                        Guardar PDF
+                                    </button>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <p>Estado del pago: <strong>sin pago generado</strong></p>
+                        <?php endif ?>
+                        <p><a href="index.php?controller=paquete&action=detalle&id=<?= (int) $item['Id_paquete'] ?>">Ver paquete</a></p>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
+
         <?php if (count($datos) > 0): ?>
+            <h3>Habitaciones</h3>
             <?php foreach ($datos as $item): ?>
                 <?php $pago_actual = $pagos_reserva[$item['Id_reserva']] ?? null; ?>
                 <?php $politica_actual = $politicas_cancelacion[$item['Id_reserva']] ?? ['permitida' => false, 'mensaje' => 'sin informacion', 'horas_restantes' => 0, 'plazo_horas' => 0]; ?>
@@ -51,7 +176,7 @@
                         <p>Salida: <?= htmlspecialchars($item['fecha_salida']) ?></p>
                         <p>Servicio especial: <?= htmlspecialchars($item['servicio_especial']) ?></p>
                         <p>Estado de la reserva: <strong><?= htmlspecialchars($item['estado_reserva']) ?></strong></p>
-                        <p>Precio: $<?= number_format((int) ($item['precio'] ?? 0), 0, ',', '.') ?></p>
+                        <p>Precio por noche (habitacion): $<?= number_format((int) ($item['precio'] ?? 0), 0, ',', '.') ?></p>
                         <?php if ($pago_actual): ?>
                             <!-- Este resumen deja visible el estado financiero actual
                                  antes de mostrar el recibo detallado. -->
@@ -188,10 +313,11 @@
                     </div>
                 </div>
             <?php endforeach ?>
-        <?php else: ?>
+        <?php elseif (count($paquetes) === 0): ?>
             <section class="description">
                 <h3>No tienes reservas registradas</h3>
-                <p>Cuando hagas una reserva con tu usuario, aparecera aqui.</p>
+                <p>Cuando reserves una habitacion o un paquete, aparecera aqui.</p>
+                <p><a href="index.php?controller=paquete&action=catalogo">Ver paquetes turisticos</a></p>
             </section>
         <?php endif ?>
     </div>

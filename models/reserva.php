@@ -122,6 +122,18 @@ class reserva
 
                 $errores[] = "ya existe una reserva activa en esa habitacion para ese rango de fechas. Fechas ocupadas: " . implode(" | ", $rangos);
             }
+
+            require_once __DIR__ . '/paquete.php';
+            $paqueteModel = new paquete();
+            $conflictos_paquete = $paqueteModel->GetConflictosHabitacionPorPaquetes(
+                $fecha_ingreso_sql,
+                $fecha_salida_sql,
+                $id_habitacion
+            );
+
+            if (count($conflictos_paquete) > 0) {
+                $errores = array_merge($errores, $conflictos_paquete);
+            }
         }
 
         if (count($errores) > 0) {

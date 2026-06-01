@@ -9,6 +9,7 @@ require_once "controller/reservacontroller.php";
 require_once "controller/searchcontroller.php";
 require_once "controller/propiedadcontroller.php";
 require_once "controller/mapcontroller.php";
+require_once "controller/paquetecontroller.php";
 
 // Se obtienen el controlador y la acción desde la URL (GET)
 // Si no existen, se asigna null
@@ -57,6 +58,10 @@ switch ($controller) {
 
     case 'propiedad':
         $controller = new propiedadcontroller();
+        break;
+
+    case 'paquete':
+        $controller = new paquetecontroller();
         break;
 
     default:

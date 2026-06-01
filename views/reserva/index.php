@@ -12,6 +12,7 @@
 
         <nav>
             <a href="index.php?controller=login&action=user">Inicio</a>
+            <a href="index.php?controller=paquete&action=catalogo">Paquetes</a>
             <a href="index.php?controller=reserva&action=index">Reserva</a>
             <a href="index.php?controller=search&action=index">Buscar</a>
             <a href="index.php?controller=reserva&action=misreservas">Mis reservas</a>

@@ -35,6 +35,7 @@ if (!isset($datos)) {
             ?>
             <a href="index.php?controller=login&action=admin">Inicio</a>
             <a href="index.php?controller=propiedad&action=index">Propiedades</a>
+            <a href="index.php?controller=paquete&action=admin">Paquetes</a>
             <a href="index.php?controller=reserva&action=history">Historial</a>
             <a href="index.php?controller=reserva&action=host">Reservas</a>
             <a href="index.php?controller=login&action=logout">Cerrar</a>  
